@@ -1,0 +1,93 @@
+.container {
+  margin-top: 50px;
+}
+
+.container .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #424242;
+}
+
+.container .header .image {
+  width: 70px;
+  height: 70px;
+  background: url(../../../assets/Giang/logo.png);
+  background-size: 70px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container .header .title {
+  text-align: center;
+  width: 150px;
+  padding-top: 23px;
+  font-weight: bold;
+}
+
+.container .header .sign-up {
+  padding-top: 10px;
+  height: 50px;
+  margin-left: 310px;
+  border-radius: 70px;
+}
+
+.container .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .content .left {
+  padding-top: 100px;
+  -webkit-box-flex: 40;
+      -ms-flex: 40;
+          flex: 40;
+  height: 555px;
+}
+
+.container .content .left .title-1 {
+  font-weight: bold;
+  color: red;
+  font-size: 15px;
+}
+
+.container .content .left .title-2 {
+  color: #424242;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.container .content .left .title-2 .logo-house {
+  width: 50px;
+  height: 50px;
+  background: url(../../../assets/Giang/house.png);
+  background-size: 50px;
+  background-repeat: no-repeat;
+}
+
+.container .content .left .title-3 {
+  color: #848484;
+}
+
+.container .content .left .title-4 {
+  margin-top: 20px;
+  padding-top: 10px;
+  height: 50px;
+  width: 150px;
+  border-radius: 70px;
+  font-weight: bold;
+}
+
+.container .content .right {
+  -webkit-box-flex: 60;
+      -ms-flex: 60;
+          flex: 60;
+  width: 600px;
+  height: 600px;
+  background: url(../../../assets/Giang/phone.png);
+  background-repeat: no-repeat;
+  background-size: 600px;
+  margin-left: 130px;
+}
+/*# sourceMappingURL=man-hinh-chinh.component.css.map */

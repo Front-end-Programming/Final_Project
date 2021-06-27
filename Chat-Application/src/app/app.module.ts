@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Giang/header/header.component';
+import { ManHinhChinhComponent } from './Giang/man-hinh-chinh/man-hinh-chinh.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ManHinhChinhComponent
   ],
   imports: [
     BrowserModule
