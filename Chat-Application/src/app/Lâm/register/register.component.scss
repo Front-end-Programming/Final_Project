@@ -1,0 +1,75 @@
+.container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+
+    .form{
+
+        background-color:white;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0px ;
+        border-radius: 20px;
+        box-shadow:  0 0 10px 5px hsl(0, 15%, 92%);
+
+        .icon{
+
+            background-color: rgb(216, 216, 203);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius:50% ;
+            border: .5px solid #5a5252;
+            margin-bottom: 20px;
+
+            .icon-camera{
+                font-size: 20px;
+
+            }
+        }
+
+         
+        input{
+
+            margin: 20px 0;
+            width: 300px;
+            border-radius: 20px;
+            border: 1px solid #d8d1d1;
+            padding: 10px;
+            outline: none;
+        }
+
+
+        .btn{
+
+            display: flex;
+            margin: 20px 0;
+            justify-content: space-between;
+            align-items: center;
+            width: 325px;
+           
+           
+
+            button{
+                width: 120px;
+                padding: 10px;
+                border-radius: 30px;
+                color: white;
+                background-color: #dc3545;
+                border: none;
+            }
+        }
+
+
+    }
+  
+
+}
+
