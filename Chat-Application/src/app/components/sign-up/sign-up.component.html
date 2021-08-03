@@ -24,7 +24,7 @@
       <p>Already a member? <a routerLink="/sign-in">Log in</a></p>
     </header>
 
-    <form class="sign-container__form">
+    <form class="sign-container__form" #signUp="ngForm">
       <div class="sign-container__form-group">
         <label for="username">Username</label>
         <input
@@ -87,7 +87,7 @@
         </div>
       </div>
 
-      <button class="sign-container__form-btn" type="submit">
+      <button [disabled]="signUp.invalid" class="sign-container__form-btn" type="submit">
         Create an account
       </button>
     </form>
