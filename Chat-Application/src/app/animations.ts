@@ -19,7 +19,7 @@ export const fader = trigger('faderAnimation', [
 
     query(':enter', [
       animate(
-        '600ms ease',
+        '300ms ease',
         style({ opacity: 1, transform: 'scale(1) translateY(0)' })
       ),
     ]),
