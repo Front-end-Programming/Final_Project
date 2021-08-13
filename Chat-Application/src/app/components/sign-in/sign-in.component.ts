@@ -11,6 +11,10 @@ export class SignInComponent implements OnInit {
   password: string = '';
   isShowPassword: boolean = false;
 
+  // Kiem tra ten nguoi dung va mat khau co dung hay khong
+  isCorrect: boolean = true;
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -21,8 +25,9 @@ export class SignInComponent implements OnInit {
     this.isShowPassword = !this.isShowPassword;
   }
 
-  log(x: NgModel) {
-    console.log(x)
+  // Sign in
+  onSignIn() {
+    this.isCorrect = !this.isCorrect;
   }
 
 }
