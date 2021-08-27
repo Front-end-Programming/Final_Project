@@ -1,0 +1,31 @@
+<div class="overlay" *ngIf="isShowJoinGroup" >
+  <div class="content" @ui>
+    <h2 class="content__branch">Super</h2>
+    <h3 class="content__title">Join a group</h3>
+
+    <form class="content__form" #joinGroup="ngForm">
+      <input
+        required
+        type="text"
+        ngModel
+        name="groupName"
+        #gn="ngModel"
+        placeholder="Enter the name of the group"
+      />
+
+      <div class="content__form-error" *ngIf="gn.touched && gn.invalid">
+        
+        <div *ngIf="gn.errors?.required">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>The name cannot be blank</span>
+        </div>
+
+      </div>
+      <button [disabled]="gn.invalid" type="submit">Join Now</button>
+    </form>
+
+    <div (click)="closeJoinGroup()" title="Close" class="content__close">
+      <i class="fas fa-times"></i>
+    </div>
+  </div>
+</div>

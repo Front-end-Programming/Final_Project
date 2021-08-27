@@ -1,0 +1,69 @@
+@import "../../../assets/colors";
+@import "../../../assets/utilities";
+
+.users {
+
+  &__heading {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-height: 340px;
+    overflow-y: auto;
+    padding-right: 4px;
+    @include myScrollBar();
+
+    
+
+    &-item {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 10px;
+
+      
+
+      &-avatar {
+        position: relative;
+        @include avatar(36px, 12px);
+        margin-right: 14px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: $clr-disabled;
+          bottom: 0;
+          border: 2px solid #fff;
+          right: 0;
+        }
+        
+        &.online {
+          &::after {
+            background-color: $clr-successful;
+          }
+        }
+        
+      }
+
+      &-name {
+          font-size: 15px;
+          @include threeDots();
+      }
+    }
+
+    &-item.active {
+      background-color: $clr-secondary;
+    }
+  }
+}

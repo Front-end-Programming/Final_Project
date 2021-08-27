@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,10 +12,10 @@ export class SignInComponent implements OnInit {
   isShowPassword: boolean = false;
 
   // Kiem tra ten nguoi dung va mat khau co dung hay khong
-  isCorrect: boolean = true;
+  isCorrect: boolean = false;
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +28,8 @@ export class SignInComponent implements OnInit {
   // Sign in
   onSignIn() {
     this.isCorrect = !this.isCorrect;
+    this.router.navigate(['/chat']);
+
   }
 
 }

@@ -21,7 +21,7 @@
     <header>
       <p>Start for free</p>
       <h1>Sign up to Super.</h1>
-      <p>Already a member? <a routerLink="/sign-in">Sign in</a></p>
+      <p>Already a member? <a routerLink="/">Sign in</a></p>
     </header>
 
     <form class="sign-container__form" #signUp="ngForm" (ngSubmit)="onSignUp()">
@@ -56,7 +56,7 @@
 
          <!-- Check whether username has already existed -->
          <div *ngIf="isExist" class="sign-container__warning">
-          <i class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
           <span>
             Username already exists
           </span

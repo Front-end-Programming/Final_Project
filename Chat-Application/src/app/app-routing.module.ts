@@ -1,3 +1,4 @@
+import { ChatComponent } from './components/chat/chat.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 const appRoute: Routes = [
   
   {
-    path: 'sign-in',
+    path: '',
     component: SignInComponent,
     data: {
       animation: 'sign-in'
@@ -23,11 +24,9 @@ const appRoute: Routes = [
     }
   },
 
-  {
-    path: '',
-    redirectTo: '/sign-in',
-    pathMatch: 'full'
-  },
+  
+
+
 
 ];
 

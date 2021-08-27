@@ -9,11 +9,21 @@ import { CommonModule } from '@angular/common';
 // Animations Module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Angular Material
+import {MatIconModule} from '@angular/material/icon';
+
 // Components
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ChatComponent } from './components/chat/chat.component';
+import { ToastMessageComponent } from './components/toast-message/toast-message.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { JoinGroupComponent } from './components/join-group/join-group.component';
+import { CreateGroupComponent } from './components/create-group/create-group.component';
+import { ChatMainComponent } from './components/chat-main/chat-main.component';
+import { SendChatComponent } from './components/send-chat/send-chat.component';
 
 
 
@@ -21,7 +31,14 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ChatComponent,
+    ToastMessageComponent,
+    UserListComponent,
+    JoinGroupComponent,
+    CreateGroupComponent,
+    ChatMainComponent,
+    SendChatComponent
   ],
 
   imports: [
@@ -29,7 +46,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule
   ],
 
   providers: [],
