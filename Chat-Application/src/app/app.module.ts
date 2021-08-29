@@ -24,6 +24,7 @@ import { JoinGroupComponent } from './components/join-group/join-group.component
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { ChatMainComponent } from './components/chat-main/chat-main.component';
 import { SendChatComponent } from './components/send-chat/send-chat.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 
 
@@ -38,7 +39,8 @@ import { SendChatComponent } from './components/send-chat/send-chat.component';
     JoinGroupComponent,
     CreateGroupComponent,
     ChatMainComponent,
-    SendChatComponent
+    SendChatComponent,
+    ErrorPageComponent
   ],
 
   imports: [

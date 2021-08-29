@@ -1,10 +1,10 @@
-import { ChatComponent } from './components/chat/chat.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const appRoute: Routes = [
   
@@ -23,6 +23,11 @@ const appRoute: Routes = [
       animation: 'sign-up'
     }
   },
+
+  {
+    path: 'chat',
+    component: ChatComponent
+  }
 
   
 

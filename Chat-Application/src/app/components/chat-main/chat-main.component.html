@@ -1,44 +1,57 @@
 <div class="chat-main">
-  <header class="chat-main__header">
-    <div class="chat-main__header-avatar online">N</div>
-    <div class="chat-main__header-info">
-      <h3>Nguyen Hoang Duc Duy</h3>
-      <span>Active Now</span>
-      <!-- <span>Offline</span> -->
+  <div>
+    <header class="chat-main__header">
+      <div class="chat-main__header-avatar online">N</div>
+      <div class="chat-main__header-info">
+        <h3>Nguyen Hoang Duc Duy</h3>
+        <span>Active Now</span>
+        <!-- <span>Offline</span> -->
+      </div>
+    </header>
+
+    <div class="chat-main__content">
+      <img
+        *ngIf="messages.length === 0"
+        draggable="false"
+        class="chat-main__content-img"
+        src="../../../assets/images/undraw_empty_xct9.svg"
+        alt="empty"
+      />
+      <ul>
+        <li
+          *ngFor="let message of messages; index as i"
+          [ngClass]="message.name === 'duypro' ? 'right' : ''"
+        >
+          <div
+            [attr.data-username]="message.name"
+            class="chat-main__content-avatar"
+          >
+            {{ message.name[0] | uppercase }}
+          </div>
+
+          <span
+            class="chat-main__content-text"
+            [attr.data-date]="message.createAt | date: 'MMMM hh:mm a'"
+          >
+            {{ message.mes }}
+          </span>
+        </li>
+      </ul>
     </div>
-  </header>
 
-  <div class="chat-main__content">
-    <img
-      *ngIf="messages.length === 0"
-      draggable="false"
-      class="chat-main__content-img"
-      src="../../../assets/images/undraw_empty_xct9.svg"
-      alt="empty"
-    />
-    <ul>
-      <li
-        *ngFor="let message of messages; index as i"
-        [ngClass]="message.name === 'duypro' ? 'right' : ''"
-      >
-        <div
-          [attr.data-username]="message.name"
-          class="chat-main__content-avatar"
-        >
-          {{ message.name[0] | uppercase }}
-        </div>
-
-        <span
-          class="chat-main__content-text"
-          [attr.data-date]="message.createAt | date: 'MMMM hh:mm a'"
-        >
-          {{ message.mes }}
-        </span>
-
-        <!-- {{ message.createAt | date: "MMMM hh:mm a" }} -->
-      </li>
-    </ul>
+    <app-send-chat></app-send-chat>
   </div>
 
-  <app-send-chat></app-send-chat>
+  <div>
+    <div class="chat-main__group">
+      <img
+        draggable="false"
+        src="../../../assets/images/undraw_Waiting__for_you_ldha.svg"
+        alt=""
+        class="chat-main__group-img"
+      />
+
+      
+    </div>
+  </div>
 </div>

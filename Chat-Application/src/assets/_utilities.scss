@@ -1,9 +1,9 @@
 @import "./colors";
 
-@mixin avatar($size, $fontSize) {
+@mixin avatar($size, $fontSize, $bg: $clr-primary) {
   min-width: $size;
   height: $size;
-  background-color: $clr-primary;
+  background-color: $bg;
   border-radius: 50%;
   display: grid;
   place-items: center;

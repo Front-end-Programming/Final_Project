@@ -77,16 +77,7 @@ export class ChatMainComponent implements OnInit {
       to: 'duy1',
       mes: 'special messagespecial message',
       createAt: '2021-08-24 22:03:31',
-    },
-
-    {
-      id: 11410,
-      name: 'duy1',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    },
+    }
   ];
 
   constructor() {}

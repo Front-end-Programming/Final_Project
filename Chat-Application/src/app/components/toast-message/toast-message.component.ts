@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { slideIn } from './../../animations';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,9 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToastMessageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
 }

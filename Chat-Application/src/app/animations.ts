@@ -5,10 +5,9 @@ import {
   animate,
   query,
 } from '@angular/animations';
-import { transformAll } from '@angular/compiler/src/render3/r3_ast';
 
 export const fader = trigger('faderAnimation', [
-  transition('* <=> *', [
+  transition('sign-in <=> sign-up', [
     query(
       ':enter, :leave',
       [
