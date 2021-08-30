@@ -1,0 +1,96 @@
+@import "../../../assets/colors";
+@import "../../../assets/utilities";
+
+.users {
+
+  &__heading {
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $clr-text;
+    transition: .2s;
+    padding: 8px 10px;
+    
+    &:hover {
+      background-color: $clr-secondary;
+      border-radius: 10px;
+    }
+
+    & > i.fas {
+      transition: .2s;
+    }
+
+    & > i.fas.rotate {
+      transform: rotate(-180deg);
+    }
+
+
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-height: 330px;
+    overflow-y: auto;
+    padding-right: 4px;
+    @include myScrollBar();
+
+    &.collapse {
+      height: 0;
+    }
+
+    
+
+    &-item {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 10px;
+
+      
+
+      &-avatar {
+        position: relative;
+        @include avatar(36px, 12px);
+        margin-right: 14px;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: $clr-disabled;
+          bottom: 0;
+          border: 2px solid #fff;
+          right: 0;
+        }
+        
+        &.online {
+          &::after {
+            background-color: $clr-successful;
+          }
+        }
+        
+      }
+
+      &-name {
+          font-size: 15px;
+          @include threeDots();
+          flex: 1;
+      }
+    }
+
+    &-item.active {
+      background-color: $clr-secondary;
+    }
+  }
+}

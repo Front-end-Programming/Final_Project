@@ -1,0 +1,48 @@
+@import "../../../assets/colors";
+
+.toast {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 360px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+  padding: 6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+ 
+  &-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: lighten($color: $clr-successful, $amount: 50%);
+    font-size: 20px;
+    color: $clr-successful;
+    margin-right: 20px;
+    display: grid;
+    place-items: center;
+  }
+
+  &-content {
+    line-height: 1.3;
+    color: $clr-text;
+    font-size: 16px;
+
+    h4 {
+      font-weight: 600;
+    }
+    span {
+      color: $clr-successful;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    right: 26px;
+    cursor: pointer;
+    color: lighten($color: #000000, $amount: 70%);
+    font-size: 18px;
+  }
+}

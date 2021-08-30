@@ -1,0 +1,43 @@
+@import "../../../assets/colors";
+.error {
+  background-image: url(../../../assets/images/error-bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    img {
+      max-width: 300px;
+    }
+
+    h1 {
+      letter-spacing: 1px;
+      color: $clr-primary;
+    }
+
+    p {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+      color: $clr-text;
+    }
+
+    a {
+      background-color: $clr-primary;
+      color: #fff;
+      padding: 10px 30px;
+      border-radius: 50px;
+    }
+  }
+}

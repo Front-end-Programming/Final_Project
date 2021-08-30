@@ -1,3 +1,5 @@
-<header>
-    <app-man-hinh-chinh></app-man-hinh-chinh>
-</header>
+<div class="router-container" [@faderAnimation]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>
+<app-toast-message></app-toast-message>
+

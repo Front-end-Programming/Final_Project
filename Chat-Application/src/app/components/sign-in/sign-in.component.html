@@ -1,0 +1,111 @@
+<div class="sign-container">
+  <section class="sign-container__content">
+    <header>
+      <p>Welcome back</p>
+      <h1>Sign in to Super.</h1>
+      <p>Don't have an account? <a routerLink="/chat">Sign up</a></p>
+    </header>
+
+    <form class="sign-container__form" #signIn="ngForm" (ngSubmit)="onSignIn()">
+      <div class="sign-container__form-group">
+        <label for="username">Username</label>
+        <input
+          [(ngModel)]="username"
+          minlength="3"
+          required
+          type="text"
+          name="username"
+          #un="ngModel"
+        />
+        <i class="fas fa-user"></i>
+
+        <!-- Validate form values -->
+        <div *ngIf="un.touched && un.invalid">
+
+          <!-- Not null -->
+          <div *ngIf="un.errors?.required" class="sign-container__warning">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>The username cannot be blank</span>
+          </div>
+
+          <!-- At least 3 characters -->
+          <div *ngIf="un.errors?.minlength" class="sign-container__warning">
+            <i class="fas fa-exclamation-circle"></i>
+            <span
+              >The username must be at least
+              {{ un.errors?.minlength.requiredLength }} chars</span
+            >
+          </div>
+        </div>
+
+        <!-- Check whether username or password is correct -->
+        <div *ngIf="isCorrect" class="sign-container__warning">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>
+            Username or password is incorrect
+          </span
+          >
+        </div>
+      </div>
+
+      <div class="sign-container__form-group">
+        <label for="password">Password</label>
+        <input
+          [(ngModel)]="password"
+          required
+          minlength="3"
+          maxlength="16"
+          type="{{ isShowPassword ? 'text' : 'password' }}"
+          name="password"
+          #pw="ngModel"
+        />
+        <i
+          (click)="showPassword()"
+          class="fas"
+          [ngClass]="isShowPassword ? 'fa-eye-slash' : 'fa-eye'"
+        ></i>
+
+        <!-- Validate form values -->
+        <div *ngIf="pw.touched && pw.invalid">
+          <!-- Not null -->
+          <div *ngIf="pw.errors?.required" class="sign-container__warning">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>The password cannot be blank</span>
+          </div>
+
+          <!-- At least 3 characters -->
+          <div *ngIf="pw.errors?.minlength" class="sign-container__warning">
+            <i class="fas fa-exclamation-circle"></i>
+            <span
+              >The password must be at least
+              {{ pw.errors?.minlength.requiredLength }} chars</span
+            >
+          </div>
+        </div>
+
+        
+
+      </div>
+
+      <button [disabled]="signIn.invalid" class="sign-container__form-btn" type="submit">Sign In</button>
+    </form>
+  </section>
+
+  <section class="sign-container__visual">
+    <div class="sign-container__text">
+      <h2>Super.</h2>
+      <p>
+        A central hub where teams can work, plan and achieve amazing things
+        together.
+      </p>
+    </div>
+
+    <div class="sign-container__image-box">
+      <img
+        draggable="false"
+        src="../../../assets/images/visual-sign-in-image.png"
+        alt="Visual image for sign-up"
+      />
+    </div>
+  </section>
+</div>

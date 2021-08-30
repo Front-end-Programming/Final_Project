@@ -1,0 +1,48 @@
+@import '../../../assets/colors';
+
+.send-chat {
+    background-color: $clr-secondary;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 9px 20px 10px;
+    overflow: hidden;
+    
+
+    &__form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+
+
+        input {
+            width: 90%;
+            outline: none;
+            border: 1px solid #ccc;
+            padding: 8px 16px;
+            border-radius: 50px;
+            caret-color: $clr-primary;
+            font-size: 14px;
+        }
+
+        button[type="submit"] {
+            transition: .3s;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: #fff;
+            background-color: $clr-primary;
+            display: grid;
+            place-items: center;
+
+            &:disabled {
+                background-color: transparent;
+                color: $clr-disabled    ;
+            }
+
+        }
+    }
+}
