@@ -17,7 +17,6 @@
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
   &__info {
-    // border: 1px solid limegreen;
     padding: 20px 30px;
     overflow: hidden;
 
@@ -47,14 +46,12 @@
       aspect-ratio: 1 / 0.8;
       background-color: $clr-secondary;
       border-radius: 10px;
-      margin: 0 auto 20px;
-      // border: 1px solid #ccc;
+      margin: 0 auto 30px;
       padding: 20px;
-      // box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
     }
 
     &-avatar {
-      @include avatar(70px, 20px);
+      @include avatar(70px, 22px);
     }
 
     &-name {
@@ -88,7 +85,8 @@
       gap: 10px;
       margin-top: 30px;
 
-      span {
+      & > span {
+        position: relative;
         width: 30px;
         height: 30px;
         font-size: 14px;
@@ -98,6 +96,22 @@
         display: grid;
         place-items: center;
         cursor: pointer;
+      }
+
+      & > span:nth-child(1) {
+        @include tooltip('Join a group');
+
+        &::after {
+          top: -150%;
+        }
+      }
+
+      & > span:nth-child(2) {
+        @include tooltip('Create your groups');
+
+        &::after {
+          top: -150%;
+        }
       }
     }
 
@@ -114,6 +128,11 @@
       top: 10px;
       left: 10px;
       border: 1px solid #ccc;
+      @include tooltip('Log out');
+
+      &::after {
+        left: 0;
+      }
     }
     
   }

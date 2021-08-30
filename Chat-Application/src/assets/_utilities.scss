@@ -1,7 +1,7 @@
 @import "./colors";
 
 @mixin avatar($size, $fontSize, $bg: $clr-primary) {
-  min-width: $size;
+  width: $size;
   height: $size;
   background-color: $bg;
   border-radius: 50%;
@@ -13,7 +13,7 @@
 }
 
 @mixin threeDots {
-  overflow: hidden;
+  overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -31,13 +31,39 @@
 
   &::-webkit-scrollbar-track:hover {
     background-color: #e5ebe8;
-    
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #bcc0c4;
+  }
+}
+
+@mixin tooltip($message) {
+
+  & {
+    z-index: 100;
+  }
+  &::after {
+    content: $message;
+    position: absolute;
+    font-size: 12px;
+    width: max-content;
+    top: 150%;
+    color: #fff;
+    background-color: rgba(#000000, 0.7);
+    border-radius: 10px;
+    padding: 8px 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -57,7 +83,7 @@
     background-color: #fff;
     border-radius: 10px;
     padding: 20px 60px;
-    box-shadow: 0 8px 30px 0 rgba( 0,0,0,0.25 );
+    box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(4px);
 
     &__branch {
@@ -127,7 +153,6 @@
             margin-left: 8px;
           }
         }
-        
       }
     }
     &__close {

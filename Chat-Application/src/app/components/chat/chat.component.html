@@ -21,12 +21,12 @@
       </p>
 
       <div class="chat__info-actions">
-        <span title="Add friend"><i class="fas fa-user-plus"></i></span>
-        <span (click)="showJoinGroup()" title="Join a group"><i class="fas fa-sign-in-alt"></i></span>
-        <span (click)="showCreateGroup()" title="Create your group"><i class="fas fa-users"></i></span>
+        <!-- <span> <i class="fas fa-user-plus"></i></span> -->
+        <span (click)="showJoinGroup()"><i class="fas fa-sign-in-alt"></i></span>
+        <span (click)="showCreateGroup()"><i class="fas fa-users"></i></span>
       </div>
 
-      <div title="Log out" class="chat__info-log-out">
+      <div class="chat__info-log-out">
         <i class="fas fa-sign-out-alt"></i>
       </div>
     </div>
@@ -34,5 +34,9 @@
     <app-user-list></app-user-list>
   </div>
 
-  <app-chat-main></app-chat-main>
+
+  
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

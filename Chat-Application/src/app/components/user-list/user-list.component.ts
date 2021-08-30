@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
+  isCollapse: boolean = false;
   constructor() { }
 
   ngOnInit(): void { }
+
+  collapse(): void {
+    this.isCollapse = !this.isCollapse;
+  }
 
 }

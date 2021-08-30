@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-main.component.scss'],
 })
 export class ChatMainComponent implements OnInit {
+
   isShowUsername: boolean = false;
+  isExpandInfo: boolean = true;
+  isCollapse: boolean = false;
+
   messages: any[] = [
     {
       id: 11853,
@@ -75,10 +79,12 @@ export class ChatMainComponent implements OnInit {
       name: 'duypro',
       type: 0,
       to: 'duy1',
-      mes: 'special messagespecial message',
+      mes: 'special messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial message',
       createAt: '2021-08-24 22:03:31',
     }
   ];
+
+  
 
   constructor() {}
 
@@ -90,5 +96,13 @@ export class ChatMainComponent implements OnInit {
 
   hideUsername(): void {
     this.isShowUsername = false;
+  }
+
+  collapse(): void {
+    this.isCollapse = !this.isCollapse;
+  }
+
+  expandInfo(): void {
+    this.isExpandInfo = !this.isExpandInfo;
   }
 }

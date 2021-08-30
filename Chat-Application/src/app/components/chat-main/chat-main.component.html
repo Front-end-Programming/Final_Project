@@ -1,4 +1,4 @@
-<div class="chat-main">
+<div class="chat-main" [class.contract]="!isExpandInfo">
   <div>
     <header class="chat-main__header">
       <div class="chat-main__header-avatar online">N</div>
@@ -6,6 +6,9 @@
         <h3>Nguyen Hoang Duc Duy</h3>
         <span>Active Now</span>
         <!-- <span>Offline</span> -->
+      </div>
+      <div (click)="expandInfo()" class="chat-main__header-more">
+        <i class="fas fa-info-circle"></i>
       </div>
     </header>
 
@@ -51,7 +54,60 @@
         class="chat-main__group-img"
       />
 
-      
+      <div class="chat-main__group-info">
+        <div class="chat-main__group-avatar">T</div>
+        <h3 class="chat-main__group-name">Typescript</h3>
+      </div>
+
+
+      <div class="chat-main__group-details">
+          <h4 (click)="collapse()" >Chat Members
+            <i [class.rotate]="isCollapse" class="fas fa-chevron-down"></i>
+          </h4>
+
+        <ul class="chat-main__group-members" [class.collapse]="isCollapse">
+          <li>
+            <div class="chat-main__group-members-avatar">G</div>
+            <span class="chat-main__group-members-name">Gsgsgsgssgsg</span>
+          </li>
+
+          <li>
+            <div class="chat-main__group-members-avatar">A</div>
+            <span class="chat-main__group-members-name">AGAsgsgssssssgcccccccccccssgsg</span>
+          </li>
+
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+          <li>
+            <div class="chat-main__group-members-avatar">P</div>
+            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
+          </li>
+        </ul>
+
+      </div>
     </div>
   </div>
 </div>

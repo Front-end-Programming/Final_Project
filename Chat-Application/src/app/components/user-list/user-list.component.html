@@ -1,9 +1,12 @@
 <div class="users">
-    <h4 class="users__heading">All Conversations</h4>
-    <ul class="users__list">
-        <li class="users__list-item">
+    <h4 (click)="collapse()" class="users__heading">
+        All Conversations
+        <i class="fas fa-chevron-down" [class.rotate]="isCollapse"></i>
+    </h4>
+    <ul class="users__list" [class.collapse]="isCollapse">
+        <li routerLink="chat-main" class="users__list-item">
             <div class="users__list-item-avatar">A</div>
-            <span title="Alexander HoHo HoHoHoHo" class="users__list-item-name">Alexander HoHosssssssss</span> 
+            <span title="Alexander HoHo HoHoHoHo" class="users__list-item-name">Alexander HoHossssssssssssssssssssss</span> 
         </li>
 
         <li class="users__list-item">
