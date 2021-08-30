@@ -1,3 +1,4 @@
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -27,6 +28,11 @@ const appRoute: Routes = [
   {
     path: 'chat',
     component: ChatComponent
+  },
+
+  {
+    path: '**',
+    component: ErrorPageComponent
   }
 
   

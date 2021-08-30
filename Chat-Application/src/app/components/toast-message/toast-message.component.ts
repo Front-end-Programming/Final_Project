@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { slideIn } from './../../animations';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ToastMessageComponent implements OnInit {
+  isShowToast: boolean = false;
+  private timeOut =  setTimeout(() => {
+    this.isShowToast = false;
+  }, 2000);
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
+   
+  }
+
+  closeToast(): void {
+    this.isShowToast = true;
+    clearTimeout(this.timeOut);
   }
 }

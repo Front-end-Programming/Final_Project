@@ -1,4 +1,4 @@
-<div class="toast" @toast>
+<div class="toast" @toast *ngIf="isShowToast" >
     <div class="toast-icon">
         <i class="fas fa-check-circle"></i>
     </div>
@@ -7,7 +7,7 @@
         <h4>Sign up successfully!<br/><span>Start Exploring</span></h4>
     </div>
 
-    <div class="toast-close">
+    <div (click)="closeToast()" class="toast-close">
         <i class="fas fa-times"></i>
     </div>
 </div>
