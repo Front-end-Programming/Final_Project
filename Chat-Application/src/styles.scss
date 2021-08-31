@@ -2,7 +2,7 @@
 // Modules
 @import "assets/reset";
 @import "assets/colors";
-
+@import "assets/responsive";
 body {
   position: relative;
   overflow: hidden;
@@ -186,5 +186,3 @@ body {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

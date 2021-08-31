@@ -1,0 +1,5 @@
+@mixin tablet() {
+    @media (max-width: 991.68px) and (min-width: 767.98px){
+        @content;
+    }
+}
