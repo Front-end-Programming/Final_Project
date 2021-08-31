@@ -1,3 +1,4 @@
+import { VisualComponent } from './components/visual/visual.component';
 import { ChatMainComponent } from './components/chat-main/chat-main.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { NgModule } from '@angular/core';
@@ -30,18 +31,17 @@ const appRoute: Routes = [
     path: 'chat',
     component: ChatComponent,
     children: [
-      {
-        path: 'chat-main',
-        component: ChatMainComponent
-      },
 
       {
         path: '',
-        redirectTo: 'chat-main',
-        pathMatch: 'full'
+        component: VisualComponent
 
+      },
+
+      {
+        path: 'chat-main',
+        component: ChatMainComponent
       }
-
     ]
   },
 
