@@ -25,6 +25,8 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
 import { ChatMainComponent } from './components/chat-main/chat-main.component';
 import { SendChatComponent } from './components/send-chat/send-chat.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { VisualComponent } from './components/visual/visual.component';
+import { LightDarkComponent } from './components/light-dark/light-dark.component';
 
 
 
@@ -41,7 +43,9 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     CreateGroupComponent,
     ChatMainComponent,
     SendChatComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    VisualComponent,
+    LightDarkComponent
   ],
 
   imports: [

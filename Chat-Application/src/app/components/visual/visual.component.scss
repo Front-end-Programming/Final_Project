@@ -1,0 +1,38 @@
+@import '../../../assets/colors';
+
+.visual {
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    &__content {
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        color: var(--clr-txt);
+
+        h1 {
+            font-weight: 600;
+            font-size: 26px;
+            letter-spacing: 1px;
+
+            span {
+                color: $clr-primary;
+                font-weight: 700;
+            }
+        }
+
+        p {
+            font-size: 15px;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        img {
+            width: 80%;
+            margin-top: 30px;
+        }
+
+    }
+}

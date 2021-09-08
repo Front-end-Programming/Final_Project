@@ -6,6 +6,7 @@ import {
   query,
 } from '@angular/animations';
 
+//  sign-in & sign-up
 export const fader = trigger('faderAnimation', [
   transition('sign-in <=> sign-up', [
     query(
@@ -34,6 +35,8 @@ export const fader = trigger('faderAnimation', [
   ]),
 ]);
 
+
+// toast message
 export const slideIn = trigger('toast', [
   transition(':enter', [
     style({
@@ -65,6 +68,8 @@ export const slideIn = trigger('toast', [
   ]),
 ]);
 
+
+//  add groud & join group
 export const uiAnim = trigger('ui', [
   transition(':enter', [
     style({

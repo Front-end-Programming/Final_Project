@@ -1,33 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
-// Modules
 @import "assets/reset";
 @import "assets/colors";
 @import "assets/responsive";
+@import "assets/utilities";
+
+:root {
+  --clr-bg: #f2f0f5;
+  --clr-bg-hover: #dddddd;
+  --clr-bg-message: #fff;
+  --clr-shadow: 5px 5px 7px #b8b6ba, -5px -5px 7px #ffffff;
+  --clr-txt: $clr-text;
+  --clr-border: #ccc;
+}
+
 body {
   position: relative;
   overflow: hidden;
-  // background-color: red;
-  // background: url("assets/images/background.jpg");
-  // background-size: cover;
-  // background-position: center;
-  // backdrop-filter: blur(5px);
-  background-color: #f3f4f6;
+  color: $clr-text;
   height: 100vh;
+  background-color: var(--clr-bg);
+
+  &.dark-mode {
+    --clr-bg: #222831;
+    --clr-bg-hover: #30475e;
+    --clr-bg-message: #393E46;
+    --clr-shadow: 5px 5px 6px #181d23, -5px -5px 6px #2c333f;
+    --clr-txt: #fff;
+    --clr-border: #30475e;
+  }
 }
 
 @mixin sign-container {
-  width: 950px;
-  height: 550px;
-  // box-shadow: 0 10px 20px rgba($color: #000000, $alpha: 0.3);
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
+  & {
+    width: 950px;
+    height: 550px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--clr-shadow);
+    background-color: (--clr-bg);
+  }
 }
 
 .sign-container {
@@ -49,14 +64,16 @@ body {
     }
 
     p {
-      color: #ccc;
+      color: #787a91;
       font-size: 14px;
     }
   }
 
   &__image-box {
     position: relative;
-    height: 80%;
+    height: 76%;
+    border-radius: 10px;
+    overflow: hidden;
 
     img {
       position: absolute;
@@ -64,7 +81,6 @@ body {
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
   }
 
@@ -80,7 +96,7 @@ body {
       margin-bottom: 40px;
 
       p {
-        color: #808080;
+        color: #787a91;
         font-size: 14px;
 
         a {
@@ -91,13 +107,14 @@ body {
 
       p:first-child {
         text-transform: uppercase;
+        color: #787a91;
       }
 
       h1 {
         letter-spacing: 1px;
         font-weight: 600;
         margin-bottom: 8px;
-        color: $clr-text;
+        color: var(--clr-txt);
       }
     }
   }
@@ -115,23 +132,26 @@ body {
 
     label {
       display: block;
-      color: $clr-text;
-      font-size: 16px;
+      color: var(--clr-txt);
+      font-size: 14px;
       font-weight: 400;
       letter-spacing: 1px;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
     }
 
     input {
       width: 100%;
-      color: $clr-text;
-      padding: 8px 20px;
+      color: var(--clr-txt);
+      padding: 8px 16px;
       padding-right: 40px;
       letter-spacing: 1px;
-      border: 1px solid #ccc;
+      // border: 1px solid #ccc;
+      border: none;
       outline: none;
       border-radius: 50px;
       font-size: 16px;
+      background-color: inherit;
+      border: 1px var(--clr-border) solid;
       caret-color: $clr-primary;
     }
 
@@ -141,9 +161,10 @@ body {
 
     & > i.fas {
       position: absolute;
-      top: 42px;
-      right: 30px;
-      font-size: 16px;
+      top: 44px;
+      right: 20px;
+      font-size: 14px;
+      color: var(--clr-txt);
     }
 
     input[type="password"] + i.fas {
@@ -175,6 +196,7 @@ body {
   }
 
   &__warning {
+    margin-top: 8px;
     display: flex;
     align-items: center;
     color: $clr-error;

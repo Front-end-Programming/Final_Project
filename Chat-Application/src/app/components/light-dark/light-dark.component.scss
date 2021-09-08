@@ -1,0 +1,75 @@
+@import "../../../assets/colors";
+@import "../../../assets/utilities";
+
+:host {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+}
+
+.theme {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: $clr-secondary;
+  color: #fff;
+  border-radius: 50%;
+  background-color: var(--clr-bg);
+  box-shadow: var(--clr-shadow);
+
+  &__checkbox {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  &__slider {
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.4s;
+    display: grid;
+    place-items: center;
+
+    &::before {
+      content: "\f185";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      display: grid;
+      place-items: center;
+      position: absolute;
+      height: 30px;
+      width: 30px;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 50%;
+      color: $clr-primary;
+    }
+
+    &::after {
+      content: "\f186";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      display: grid;
+      place-items: center;
+      position: absolute;
+      transform: translateX(120%);
+      height: 30px;
+      width: 30px;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 50%;
+      color: #d89216;
+    }
+  }
+  
+  &__checkbox:checked + &__slider::before {
+    transform: translateX(-120%);
+  }
+
+  &__checkbox:checked + &__slider::after {
+    transform: translateX(0);
+  }
+}

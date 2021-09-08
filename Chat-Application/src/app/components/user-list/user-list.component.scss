@@ -2,7 +2,6 @@
 @import "../../../assets/utilities";
 
 .users {
-
   &__heading {
     cursor: pointer;
     font-weight: 500;
@@ -10,24 +9,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: $clr-text;
-    transition: .2s;
+    color: var(--clr-txt);
     padding: 8px 10px;
-    
+    transition: background 0.2s;
+    border-radius: 10px;
+
     &:hover {
-      background-color: $clr-secondary;
+      background-color: var(--clr-bg-hover);
       border-radius: 10px;
     }
 
     & > i.fas {
-      transition: .2s;
+      transform-origin: center;
+      transition: transform .3s;
     }
 
     & > i.fas.rotate {
       transform: rotate(-180deg);
     }
-
-
   }
 
   &__list {
@@ -36,16 +35,12 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    max-height: 330px;
-    overflow-y: auto;
-    padding-right: 4px;
+    max-height: 315px;
+    padding: 4px 8px;
     @include myScrollBar();
-
-    &.collapse {
-      height: 0;
-    }
-
-    
+    box-shadow: var(--clr-shadow);
+    border-radius: 10px;
+    @include collapse();
 
     &-item {
       cursor: pointer;
@@ -55,7 +50,9 @@
       padding: 5px 10px;
       border-radius: 10px;
 
-      
+      &:hover {
+        background-color: var(--clr-bg-hover);
+      }
 
       &-avatar {
         position: relative;
@@ -63,34 +60,34 @@
         margin-right: 14px;
 
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           width: 8px;
           height: 8px;
           border-radius: 50%;
           background-color: $clr-disabled;
           bottom: 0;
-          border: 2px solid #fff;
+          border: 2px solid var(--clr-bg);
           right: 0;
         }
-        
+
         &.online {
           &::after {
             background-color: $clr-successful;
           }
         }
-        
       }
 
       &-name {
-          font-size: 15px;
-          @include threeDots();
-          flex: 1;
+        font-size: 15px;
+        @include threeDots();
+        flex: 1;
+        color: var(--clr-txt);
       }
     }
 
     &-item.active {
-      background-color: $clr-secondary;
+      background-color: var(--clr-bg-hover);
     }
   }
 }

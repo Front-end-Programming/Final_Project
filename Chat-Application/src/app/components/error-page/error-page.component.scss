@@ -1,20 +1,19 @@
 @import "../../../assets/colors";
 .error {
-  background-image: url(../../../assets/images/error-bg.png);
+  background-image: url(../../../assets/images/error-bg.svg);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   &__content {
     width: 100%;
     max-width: 600px;
-    margin-top: 100px;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 16px;
     align-items: center;
 
     img {
@@ -22,6 +21,7 @@
     }
 
     h1 {
+      margin-top: 20px;
       letter-spacing: 1px;
       color: $clr-primary;
     }
@@ -29,8 +29,9 @@
     p {
       text-align: center;
       font-size: 16px;
-      font-weight: 400;
-      color: $clr-text;
+      font-weight: 4  00;
+      color: var(--clr-txt);
+      margin-top: 10px;
     }
 
     a {
@@ -38,6 +39,9 @@
       color: #fff;
       padding: 10px 30px;
       border-radius: 50px;
+      margin-top: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
   }
 }

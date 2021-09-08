@@ -1,3 +1,4 @@
+import { VisualComponent } from './components/visual/visual.component';
 import { ChatMainComponent } from './components/chat-main/chat-main.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { NgModule } from '@angular/core';
@@ -9,60 +10,54 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 const appRoute: Routes = [
+ 
+  
   
   {
     path: '',
     component: SignInComponent,
     data: {
-      animation: 'sign-in'
-    }
+      animation: 'sign-in',
+    },
   },
 
   {
     path: 'sign-up',
     component: SignUpComponent,
     data: {
-      animation: 'sign-up'
-    }
+      animation: 'sign-up',
+    },
   },
 
   {
     path: 'chat',
     component: ChatComponent,
     children: [
-      {
-        path: 'chat-main',
-        component: ChatMainComponent
-      },
 
       {
         path: '',
-        redirectTo: 'chat-main',
-        pathMatch: 'full'
+        component: VisualComponent
 
+      },
+
+      {
+        path: 'chat-main',
+        component: ChatMainComponent
       }
-
     ]
   },
-
-
+  
   {
     path: '**',
-    component: ErrorPageComponent
-  }
+    component: ErrorPageComponent,
+  },
 
   
-
-
-
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(appRoute)
-  ],
-  exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forRoot(appRoute)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
