@@ -26,6 +26,7 @@ import { ChatMainComponent } from './components/chat-main/chat-main.component';
 import { SendChatComponent } from './components/send-chat/send-chat.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { VisualComponent } from './components/visual/visual.component';
+import { LightDarkComponent } from './components/light-dark/light-dark.component';
 
 
 
@@ -43,7 +44,8 @@ import { VisualComponent } from './components/visual/visual.component';
     ChatMainComponent,
     SendChatComponent,
     ErrorPageComponent,
-    VisualComponent
+    VisualComponent,
+    LightDarkComponent
   ],
 
   imports: [

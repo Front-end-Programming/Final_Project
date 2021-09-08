@@ -1,0 +1,10 @@
+<label class="theme" for="switch">
+  <input
+    [checked]="darkMode$ | async"
+    (change)="onToggle()"
+    type="checkbox"
+    class="theme__checkbox"
+    id="switch"
+  />
+  <span class="theme__slider"></span>
+</label>

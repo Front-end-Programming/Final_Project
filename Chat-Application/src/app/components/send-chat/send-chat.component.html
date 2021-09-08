@@ -7,6 +7,11 @@
         placeholder="Type your message"
         [(ngModel)]="message"
       />
+
+      <div class="send-chat__emoji">
+        <i class="fas fa-smile"></i>
+      </div>
+
       <button title="Send" type="submit" [disabled]="!hasMessage()">
         <i class="fas fa-paper-plane"></i>
       </button>

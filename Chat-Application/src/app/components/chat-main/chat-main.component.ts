@@ -17,7 +17,7 @@ export class ChatMainComponent implements OnInit {
       name: 'Auypro',
       type: 0,
       to: 'duy1',
-      mes: '?',
+      mes: '?jsjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjojwjeowjeojwjeowjeowjeojwjejowjew woejowjeojjojwdojowjdojwodjowjdojodjowjdowjdojwjdjo',
       createAt: '2021-08-27 10:36:21',
     },
     {

@@ -15,6 +15,10 @@
     .chat-main__content-text {
       max-width: 500px;
     }
+
+    & > div:nth-child(2) {
+      display: none;
+    }
   }
 
   &__header {
@@ -25,7 +29,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 16px;
-    background-color: $clr-secondary;
+    box-shadow: var(--clr-shadow);
     border-radius: 10px;
 
     &-avatar {
@@ -52,6 +56,7 @@
     }
 
     &-info {
+      color: var(--clr-txt);
       h3 {
         font-weight: 600;
         font-size: 16px;
@@ -61,7 +66,6 @@
         display: block;
         font-size: 12px;
         font-weight: 400;
-        color: lighten($color: #000000, $amount: 30%);
       }
     }
 
@@ -75,25 +79,25 @@
       display: grid;
       place-items: center;
       z-index: 1;
-      @include tooltip('Conversation Information');
+      @include tooltip("Conversation Information");
 
       &:hover::after {
         opacity: 1;
         visibility: visible;
       }
-
     }
   }
 
   &__content {
     position: relative;
-    margin-top: 14px;
+    margin: 14px 0 10px;
     padding: 10px 10px 0;
-    background-color: $clr-secondary;
-    height: 555px;
+    height: 545px;
     overflow-y: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    box-shadow: var(--clr-shadow);
+    border-radius: 10px;
     @include myScrollBar();
 
     ul {
@@ -171,9 +175,8 @@
       max-width: 300px;
       padding: 8px 16px;
       border-radius: 10px;
-      background-color: #fff;
-      color: $clr-text;
-      box-shadow: 0px 3px 8px rgba(#000, 0.24);
+      color: var(--clr-txt);
+      background-color: var(--clr-bg-message);
 
       &:hover::after {
         opacity: 1;
@@ -191,7 +194,8 @@
         width: max-content;
         top: 50%;
         transform: translateY(-50%);
-        left: 120%;
+        left: initial;
+        right: -160px;
         background-color: rgba(#000000, 0.7);
         color: #fff;
         font-size: 14px;
@@ -204,37 +208,42 @@
       }
 
       li.right &::after {
-        left: -60%;
+        left: -160px;
+        right: initial;
       }
     }
   }
 
-
   &__group {
-    
     position: relative;
     margin-top: 66px;
-    height: calc(555px + 60px);
-    border-radius: 10px;
-    padding: 20px 10px;
-    overflow: hidden;
+    width: 280px;
+    height: calc(555px + 62px);
+    padding: 0 26px;
 
     &-img {
       display: none;
       position: absolute;
-      max-width: 200px;
+      border-radius: 10px;
+      max-width: 280px;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      padding: 10px;
+      transform: translate(5px, -66%);
     }
 
     &-info {
+      width: 280px;
       display: flex;
       align-items: center;
       flex-direction: column;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: var(--clr-shadow);
+      transform: translateX(5px);
+      // display: none;
     }
 
     &-avatar {
@@ -243,27 +252,33 @@
 
     &-name {
       font-size: 18px;
-      color: $clr-text;
+      color: var(--clr-txt);
       letter-spacing: 1px;
       font-weight: 600;
     }
 
     &-details {
+
+      // display: none;
       h4 {
+        width: 280px;
         cursor: pointer;
         position: relative;
         font-weight: 600;
-        color: $clr-text;
+        color: var(--clr-txt);
         margin-bottom: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 8px 10px;
-        transition: 0.2s;
+        padding: 8px 12px;
+        transition: background 0.2s;
         font-weight: 500;
+        transform: translateX(5px);
+        border-radius: 8px;
+
 
         & > i.fas {
-          transition: 0.3s;
+          transition: transform 0.3s;
         }
 
         & > i.fas.rotate {
@@ -271,26 +286,27 @@
         }
 
         &:hover {
-          background-color: $clr-secondary;
-          border-radius: 8px;
+          background-color: var(--clr-bg-hover);
         }
       }
     }
 
     &-members {
       padding-left: 10px;
-      width: 300px;
-      height: 400px;
+      width: 280px;
+      max-height: 394px;
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 20px;
       overflow-y: auto;
       @include myScrollBar();
-
-      &.collapse {
-        height: 0;
-      }
+      @include collapse();
+      box-shadow: var(--clr-shadow);
+      border-radius: 10px;
+      padding: 10px 0 10px 10px;
+      margin: 0 auto;
+      transform: translateX(5px);
 
       li {
         display: flex;
@@ -304,6 +320,8 @@
 
       &-name {
         flex: 1;
+        font-size: 15px;
+        color: var(--clr-txt);
         @include threeDots();
       }
     }

@@ -10,21 +10,23 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 const appRoute: Routes = [
+ 
+  
   
   {
     path: '',
     component: SignInComponent,
     data: {
-      animation: 'sign-in'
-    }
+      animation: 'sign-in',
+    },
   },
 
   {
     path: 'sign-up',
     component: SignUpComponent,
     data: {
-      animation: 'sign-up'
-    }
+      animation: 'sign-up',
+    },
   },
 
   {
@@ -44,25 +46,18 @@ const appRoute: Routes = [
       }
     ]
   },
-
-
+  
   {
     path: '**',
-    component: ErrorPageComponent
-  }
+    component: ErrorPageComponent,
+  },
 
   
-
-
-
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(appRoute)
-  ],
-  exports: [RouterModule]
+  imports: [CommonModule, RouterModule.forRoot(appRoute)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
