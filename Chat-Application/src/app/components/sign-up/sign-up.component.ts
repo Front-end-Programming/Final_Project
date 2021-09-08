@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SignUpComponent implements OnInit {
   username: string = '';
   password: string = '';
+  confirmPass: string='';
   isShowPassword: boolean = false;
 
   // Kiem tra ten nguoi dung da ton tai hay chua

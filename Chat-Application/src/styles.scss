@@ -2,209 +2,217 @@
 @import "assets/colors";
 @import "assets/responsive";
 @import "assets/utilities";
-
 :root {
-  --clr-bg: #f2f0f5;
-  --clr-bg-hover: #dddddd;
-  --clr-bg-message: #fff;
-  --clr-shadow: 5px 5px 7px #b8b6ba, -5px -5px 7px #ffffff;
-  --clr-txt: $clr-text;
-  --clr-border: #ccc;
+    --clr-bg: #f2f0f5;
+    --clr-bg-hover: #dddddd;
+    --clr-bg-message: #fff;
+    --clr-shadow: 5px 5px 7px #b8b6ba, -5px -5px 7px #ffffff;
+    --clr-txt: $clr-text;
+    --clr-border: #ccc;
 }
 
 body {
-  position: relative;
-  overflow: hidden;
-  color: $clr-text;
-  height: 100vh;
-  background-color: var(--clr-bg);
-
-  &.dark-mode {
-    --clr-bg: #222831;
-    --clr-bg-hover: #30475e;
-    --clr-bg-message: #393E46;
-    --clr-shadow: 5px 5px 6px #181d23, -5px -5px 6px #2c333f;
-    --clr-txt: #fff;
-    --clr-border: #30475e;
-  }
+    position: relative;
+    overflow: hidden;
+    color: $clr-text;
+    height: 100vh;
+    background-color: var(--clr-bg);
+    &.dark-mode {
+        --clr-bg: #222831;
+        --clr-bg-hover: #30475e;
+        --clr-bg-message: #393E46;
+        --clr-shadow: 5px 5px 6px #181d23, -5px -5px 6px #2c333f;
+        --clr-txt: #fff;
+        --clr-border: #30475e;
+    }
 }
 
 @mixin sign-container {
-  & {
-    width: 950px;
-    height: 550px;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: var(--clr-shadow);
-    background-color: (--clr-bg);
-  }
+    & {
+        width: 950px;
+        height: 550px;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: var(--clr-shadow);
+        background-color: (--clr-bg);
+        @include tablet() {
+            & {
+                overflow: hidden;
+                width: 650px;
+                height: 825px;
+                box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                border-radius: 10px;
+                display: grid;
+                grid-template-columns: 1fr;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
 }
 
 .sign-container {
-  @include sign-container();
-
-  &__visual {
-    padding: 40px 40px;
-  }
-
-  &__text {
-    max-width: 100%;
-    text-align: center;
-
-    h2 {
-      color: $clr-primary;
-      font-size: 24px;
-      letter-spacing: 1px;
-      font-weight: 700;
-    }
-
-    p {
-      color: #787a91;
-      font-size: 14px;
-    }
-  }
-
-  &__image-box {
-    position: relative;
-    height: 76%;
-    border-radius: 10px;
-    overflow: hidden;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  &__content {
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-
-      p {
-        color: #787a91;
-        font-size: 14px;
-
-        a {
-          color: $clr-primary;
-          font-weight: 500;
+    @include sign-container();
+    &__visual {
+        padding: 40px 40px;
+        @include tablet() {
+            padding: 15px 0 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 16px;
         }
-      }
-
-      p:first-child {
-        text-transform: uppercase;
-        color: #787a91;
-      }
-
-      h1 {
-        letter-spacing: 1px;
+    }
+    &__text {
+        max-width: 100%;
+        text-align: center;
+        @include tablet() {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 50px;
+            margin-top: 24px;
+        }
+        h2 {
+            color: $clr-primary;
+            font-size: 24px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        p {
+            color: #787a91;
+            font-size: 14px;
+        }
+    }
+    &__image-box {
+        position: relative;
+        height: 76%;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__content {
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        @include tablet() {
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            p {
+                color: #787a91;
+                font-size: 14px;
+                a {
+                    color: $clr-primary;
+                    font-weight: 500;
+                }
+            }
+            p:first-child {
+                text-transform: uppercase;
+                color: #787a91;
+            }
+            h1 {
+                letter-spacing: 1px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                color: var(--clr-txt);
+            }
+        }
+    }
+    &__form {
+        width: 66%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    &__form-group {
+        position: relative;
+        margin-bottom: 30px;
+        label {
+            display: block;
+            color: var(--clr-txt);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            color: var(--clr-txt);
+            padding: 8px 16px;
+            padding-right: 40px;
+            letter-spacing: 1px;
+            // border: 1px solid #ccc;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            font-size: 16px;
+            background-color: inherit;
+            border: 1px var(--clr-border) solid;
+            caret-color: $clr-primary;
+        }
+        input.ng-touched.ng-invalid {
+            border: 1px solid $clr-error;
+        }
+        &>i.fas {
+            position: absolute;
+            top: 44px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--clr-txt);
+        }
+        input[type="password"]+i.fas {
+            cursor: pointer;
+        }
+    }
+    &__form-btn {
+        background-color: $clr-primary;
+        color: #fff;
+        border-radius: 50px;
+        outline: none;
+        border: none;
         font-weight: 600;
-        margin-bottom: 8px;
-        color: var(--clr-txt);
-      }
+        padding: 12px 20px;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+        text-transform: uppercase;
+        &:active {
+            transform: scale(0.97);
+        }
+        &:disabled {
+            background-color: $clr-disabled;
+        }
     }
-  }
-
-  &__form {
-    width: 66%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__form-group {
-    position: relative;
-    margin-bottom: 30px;
-
-    label {
-      display: block;
-      color: var(--clr-txt);
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
+    &__warning {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        color: $clr-error;
+        span {
+            font-size: 14px;
+            margin-left: 5px;
+        }
     }
-
-    input {
-      width: 100%;
-      color: var(--clr-txt);
-      padding: 8px 16px;
-      padding-right: 40px;
-      letter-spacing: 1px;
-      // border: 1px solid #ccc;
-      border: none;
-      outline: none;
-      border-radius: 50px;
-      font-size: 16px;
-      background-color: inherit;
-      border: 1px var(--clr-border) solid;
-      caret-color: $clr-primary;
-    }
-
-    input.ng-touched.ng-invalid {
-      border: 1px solid $clr-error;
-    }
-
-    & > i.fas {
-      position: absolute;
-      top: 44px;
-      right: 20px;
-      font-size: 14px;
-      color: var(--clr-txt);
-    }
-
-    input[type="password"] + i.fas {
-      cursor: pointer;
-    }
-  }
-
-  &__form-btn {
-    background-color: $clr-primary;
-    color: #fff;
-    border-radius: 50px;
-    outline: none;
-    border: none;
-    font-weight: 600;
-    padding: 12px 20px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 20px;
-    text-transform: uppercase;
-
-    &:active {
-      transform: scale(0.97);
-    }
-
-    &:disabled {
-      background-color: $clr-disabled;
-    }
-  }
-
-  &__warning {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    color: $clr-error;
-
-    span {
-      font-size: 14px;
-      margin-left: 5px;
-    }
-  }
 }
-
