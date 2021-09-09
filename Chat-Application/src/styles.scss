@@ -30,7 +30,7 @@ body {
 @mixin sign-container {
     & {
         width: 950px;
-        height: 650px;
+        height: 550px;
         border-radius: 10px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
