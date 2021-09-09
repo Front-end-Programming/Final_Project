@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DarkModeService } from 'angular-dark-mode';
 
 @Component({
   selector: 'app-send-chat',
@@ -7,9 +8,15 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class SendChatComponent implements OnInit {
   message: string = '';
-  constructor() { }
+  darkMode: boolean;
+  isShowEmoji: boolean = false;
+
+  constructor(private darkModeService: DarkModeService) { }
 
   ngOnInit(): void {
+    this.darkModeService.darkMode$.subscribe((value) => {
+      this.darkMode = value;
+    })
   }
 
   hasMessage() {
@@ -20,4 +27,7 @@ export class SendChatComponent implements OnInit {
     }
   }
 
+  addEmoji(event: any) {
+    this.message += event.emoji.native;
+  }
 }

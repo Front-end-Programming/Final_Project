@@ -2,6 +2,7 @@
 @import "assets/colors";
 @import "assets/responsive";
 @import "assets/utilities";
+@import '~@ctrl/ngx-emoji-mart/picker';
 :root {
     --clr-bg: #f2f0f5;
     --clr-bg-hover: #dddddd;
@@ -61,7 +62,9 @@ body {
 .sign-container {
     @include sign-container();
     &__visual {
-        padding: 140px 40px;
+        padding: 70px 40px;
+        background-clip: content-box;
+
         @include tablet() {
             padding: 15px 0 0;
             display: grid;
@@ -70,7 +73,6 @@ body {
         }
     }
     &__text {
-        max-width: 100%;
         text-align: center;
         @include tablet() {
             display: flex;
@@ -92,9 +94,9 @@ body {
     }
     &__image-box {
         position: relative;
-        height: 76%;
-        border-radius: 10px;
+        height: 80%;
         overflow: hidden;
+        margin-top: 20px;
         img {
             position: absolute;
             top: 0;

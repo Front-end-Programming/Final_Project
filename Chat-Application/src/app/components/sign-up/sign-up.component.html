@@ -83,37 +83,7 @@
         </div>
       </div>
 
-      <div class="sign-container__form-group">
-        <label for="password">Confirm Password</label>
-        <input
-          [(ngModel)]="confirmPass"
-          required
-          minlength="3"
-          maxlength="16"
-          type="{{ isShowPassword ? 'text' : 'password' }}"
-          name="password"
-          #pw="ngModel"
-        />
-        <i
-          (click)="showPassword()"
-          class="fas"
-          [ngClass]="isShowPassword ? 'fa-eye-slash' : 'fa-eye'"
-        ></i>
-
-        <!-- Errors handle -->
-        <div *ngIf="pw.touched && pw.invalid">
-          <div *ngIf="pw.errors?.required" class="sign-container__warning">
-            <i class="fas fa-exclamation-circle"></i>
-            <span>The password cannot be blank</span>
-                    </div>
-                    <div *ngIf="pw.errors?.minlength" class="sign-container__warning">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span>The password must be at least
-              {{ pw.errors?.minlength.requiredLength }} chars</span
-            >
-          </div>
-        </div>
-      </div>
+      
 
       <button
         [disabled]="signUp.invalid"

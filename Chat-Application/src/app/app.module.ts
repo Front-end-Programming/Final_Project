@@ -28,7 +28,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { VisualComponent } from './components/visual/visual.component';
 import { LightDarkComponent } from './components/light-dark/light-dark.component';
 
-
+// Emoji picker
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { LightDarkComponent } from './components/light-dark/light-dark.component
     CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    PickerModule
   ],
 
   providers: [],

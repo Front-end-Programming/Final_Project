@@ -17,6 +17,7 @@
   border-radius: 50%;
   background-color: var(--clr-bg);
   box-shadow: var(--clr-shadow);
+  @include tooltip('Switch your theme');
 
   &__checkbox {
     width: 0;
@@ -34,6 +35,7 @@
     transition: background 0.4s;
     display: grid;
     place-items: center;
+
 
     &::before {
       content: "\f185";

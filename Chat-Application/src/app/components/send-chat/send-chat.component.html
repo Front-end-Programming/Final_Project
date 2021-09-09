@@ -1,4 +1,4 @@
-<div class="send-chat" >
+<div class="send-chat">
   <form #sendMessage="ngForm">
     <div class="send-chat__form">
       <input
@@ -9,10 +9,17 @@
       />
 
       <div class="send-chat__emoji">
-        <i class="fas fa-smile"></i>
+        <i (click)="isShowEmoji = !isShowEmoji" class="fas fa-smile"></i>
+        <emoji-mart
+          [class.show]="isShowEmoji"
+          color="#0084ff"
+          [showPreview]="false"
+          [darkMode]="darkMode"
+          (emojiClick)="addEmoji($event)"
+        ></emoji-mart>
       </div>
 
-      <button title="Send" type="submit" [disabled]="!hasMessage()">
+      <button type="submit" [disabled]="!hasMessage()">
         <i class="fas fa-paper-plane"></i>
       </button>
     </div>
