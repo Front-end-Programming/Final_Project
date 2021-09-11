@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from './services/websocket.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 // Animation
@@ -13,9 +14,14 @@ import { fader } from './animations';
   ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   
+  constructor(private websocketService: WebsocketService) { }
+
+  ngOnInit(): void {
+    this.websocketService.onConnect();
+  }
 
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;

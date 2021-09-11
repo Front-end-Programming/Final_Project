@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { VisualComponent } from './components/visual/visual.component';
 import { ChatMainComponent } from './components/chat-main/chat-main.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
@@ -10,7 +11,25 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ChatComponent } from './components/chat/chat.component';
 
 const appRoute: Routes = [
- 
+  
+  {
+    path: 'chat',
+    component: ChatComponent,
+    canActivate: [AuthGuard],
+    children: [
+
+      {
+        path: '',
+        component: VisualComponent
+
+      },
+
+      {
+        path: 'chat-main/:type/:name',
+        component: ChatMainComponent
+      }
+    ]
+  },
   
   
   {
@@ -21,6 +40,7 @@ const appRoute: Routes = [
     },
   },
 
+
   {
     path: 'sign-up',
     component: SignUpComponent,
@@ -29,23 +49,6 @@ const appRoute: Routes = [
     },
   },
 
-  {
-    path: 'chat',
-    component: ChatComponent,
-    children: [
-
-      {
-        path: '',
-        component: VisualComponent
-
-      },
-
-      {
-        path: 'chat-main',
-        component: ChatMainComponent
-      }
-    ]
-  },
   
   {
     path: '**',

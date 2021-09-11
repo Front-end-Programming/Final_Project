@@ -7,21 +7,20 @@ import { Subscription } from 'rxjs';
   selector: 'app-join-group',
   templateUrl: './join-group.component.html',
   styleUrls: ['./join-group.component.scss'],
-  animations: [
-    uiAnim
-  ]
+  animations: [uiAnim],
 })
 export class JoinGroupComponent implements OnInit, OnDestroy {
   isShowJoinGroup: boolean = false;
   subscription: Subscription;
-  constructor(private uiService: UiServiceService) { }
+  constructor(private uiService: UiServiceService) {}
 
   ngOnInit(): void {
-    this.subscription = this.uiService.getJoinGroupSubject()
-                        .subscribe((value) => {
-                          this.isShowJoinGroup = value;
-                          console.log({value});
-                        });
+    this.subscription = this.uiService
+      .getJoinGroupSubject()
+      .subscribe((value) => {
+        this.isShowJoinGroup = value;
+        console.log({ value });
+      });
   }
 
   ngOnDestroy(): void {
@@ -31,5 +30,4 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
   closeJoinGroup(): void {
     this.uiService.showJoinGroup();
   }
-
 }

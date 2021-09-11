@@ -1,94 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from './../../services/websocket.service';
+import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Message } from './../../models/message.model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-chat-main',
   templateUrl: './chat-main.component.html',
   styleUrls: ['./chat-main.component.scss'],
 })
-export class ChatMainComponent implements OnInit {
-
+export class ChatMainComponent implements OnInit, OnDestroy {
   isShowUsername: boolean = false;
   isExpandInfo: boolean = true;
   isCollapse: boolean = false;
+  onlineSubscription: Subscription;
+  peopleSubscription: Subscription;
 
-  messages: any[] = [
-    {
-      id: 11853,
-      name: 'Auypro',
-      type: 0,
-      to: 'duy1',
-      mes: '?jsjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjojwjeowjeojwjeowjeowjeojwjejowjew woejowjeojjojwdojowjdojwodjowjdojodjowjdowjdojwjdjo',
-      createAt: '2021-08-27 10:36:21',
-    },
-    {
-      id: 11852,
-      name: 'duy1',
-      type: 0,
-      to: 'duypro',
-      mes: 'LALALALALALALALALALA',
-      createAt: '2021-08-27 10:36:02',
-    },
-    {
-      id: 11410,
-      name: 'duypro',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    },
+  username: string = '';
+  type: number;
 
-    {
-      id: 11410,
-      name: 'duypro',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    },
+  isOnline: boolean = true;
+  messages: Message[] = [];
 
+  constructor(
+    private route: ActivatedRoute,
+    private websocketServie: WebsocketService
+  ) {}
 
-    {
-      id: 11410,
-      name: 'duy1',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    },
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.username = <string>params.get('name');
+      this.type = +<string>params.get('type');
 
-    {
-      id: 11410,
-      name: 'duypro',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    },
+      console.log(this.type);
 
-    {
-      id: 11410,
-      name: 'duy1',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    },
+      this.websocketServie.checkOnline(this.username);
+      this.onlineSubscription = this.websocketServie.checkOnlineSubject.subscribe((data) => {
+        this.isOnline = data;
+      });
 
-    {
-      id: 11410,
-      name: 'duypro',
-      type: 0,
-      to: 'duy1',
-      mes: 'special messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial messagespecial message',
-      createAt: '2021-08-24 22:03:31',
-    }
-  ];
+        this.websocketServie.getMessagesFromPeople(this.username);
+        this.peopleSubscription = this.websocketServie.messagesPeople.subscribe((data) => {
+          console.log(this.username);
+          console.log(data);
+        });
+    });
+  }
 
-  
-
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnDestroy(): void {
+    this.onlineSubscription.unsubscribe();
+    this.peopleSubscription.unsubscribe();
+  }
 
   showUsername(): void {
     this.isShowUsername = true;

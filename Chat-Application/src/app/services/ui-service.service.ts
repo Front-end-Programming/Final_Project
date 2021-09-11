@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UiServiceService {
   private isShowJoinGroup: boolean = false;
   private isShowCreateGroup: boolean = false;
   private joinGroupSubject = new Subject<boolean>();
   private createGroupSubject = new Subject<boolean>();
+  username: string = '';
 
-  constructor() { }
+  constructor() {}
 
   showJoinGroup(): void {
     this.isShowJoinGroup = !this.isShowJoinGroup;
@@ -29,5 +29,9 @@ export class UiServiceService {
 
   getCreateGroupSubject(): Observable<boolean> {
     return this.createGroupSubject;
+  }
+
+  sendUsername(username: string): void {
+    this.username = username;
   }
 }

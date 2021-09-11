@@ -76,7 +76,7 @@ export const uiAnim = trigger('ui', [
       opacity: 0,
       transform: 'scale(0)'
     }),
-    animate('300ms ease-out', style({
+    animate('200ms ease-out', style({
       opacity: 1,
       transform: 'scale(1)'
 
@@ -88,7 +88,7 @@ export const uiAnim = trigger('ui', [
       opacity: 1
 
     }),
-    animate('300ms ease-out', style({
+    animate('200ms ease-out', style({
       opacity: 0
     }))
   ])

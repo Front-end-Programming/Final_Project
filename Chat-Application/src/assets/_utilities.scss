@@ -1,8 +1,8 @@
 @import "./colors";
 
 @mixin avatar($size, $fontSize, $bg: $clr-primary) {
-  width: $size;
-  height: $size;
+  min-width: $size;
+  min-height: $size;
   background-color: $bg;
   border-radius: 50%;
   display: grid;
@@ -61,8 +61,8 @@
     font-size: 12px;
     width: max-content;
     top: 150%;
-    color: #fff;
-    background-color: rgba(#000000, 0.7);
+    color: var(--clr-txt-tooltip);
+    background-color: var(--clr-bg-tooltip);
     border-radius: 10px;
     padding: 8px 10px;
     opacity: 0;

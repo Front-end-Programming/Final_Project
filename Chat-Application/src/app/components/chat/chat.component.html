@@ -11,7 +11,7 @@
 
     <div class="chat__info-user">
       <div class="chat__info-avatar">{{ username[0] | uppercase }}</div>
-      <h3 class="chat__info-name" title="Nguyen Hoang Duc Duy">
+      <h3 class="chat__info-name" >
         {{ username }}
       </h3>
 
@@ -26,12 +26,12 @@
         <span (click)="showCreateGroup()"><i class="fas fa-users"></i></span>
       </div>
 
-      <div class="chat__info-log-out">
+      <div (click)="onLogOut()" class="chat__info-log-out">
         <i class="fas fa-sign-out-alt"></i>
       </div>
     </div>
 
-    <app-user-list></app-user-list>
+    <app-user-list [username]=username></app-user-list>
   </div>
 
 
