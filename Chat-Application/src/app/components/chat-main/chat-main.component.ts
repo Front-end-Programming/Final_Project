@@ -1,8 +1,9 @@
+import { UiServiceService } from './../../services/ui-service.service';
 import { WebsocketService } from './../../services/websocket.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Message } from './../../models/message.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chat-main',
@@ -10,11 +11,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./chat-main.component.scss'],
 })
 export class ChatMainComponent implements OnInit, OnDestroy {
+  mainUsername: string = '';
   isShowUsername: boolean = false;
   isExpandInfo: boolean = true;
   isCollapse: boolean = false;
   onlineSubscription: Subscription;
   peopleSubscription: Subscription;
+  groupSubscription: Subscription;
 
   username: string = '';
   type: number;
@@ -24,10 +27,12 @@ export class ChatMainComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private websocketServie: WebsocketService
+    private websocketServie: WebsocketService,
+    private uiService: UiServiceService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.mainUsername = this.uiService.username;
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.username = <string>params.get('name');
       this.type = +<string>params.get('type');
@@ -41,8 +46,12 @@ export class ChatMainComponent implements OnInit, OnDestroy {
 
         this.websocketServie.getMessagesFromPeople(this.username);
         this.peopleSubscription = this.websocketServie.messagesPeople.subscribe((data) => {
-          console.log(this.username);
-          console.log(data);
+          this.messages = data;
+        });
+
+        this.websocketServie.getMessagesFromGroup(this.username);
+        this.groupSubscription = this.websocketServie.messagesGroup.subscribe((data) => {
+          this.messages = data;
         });
     });
   }
@@ -50,6 +59,7 @@ export class ChatMainComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.onlineSubscription.unsubscribe();
     this.peopleSubscription.unsubscribe();
+    this.groupSubscription.unsubscribe();
   }
 
   showUsername(): void {

@@ -10,7 +10,6 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit, OnDestroy {
-  @Input() username: string = '';
   users: User[] = [];
   subscription: Subscription;
   isCollapse: boolean = false;

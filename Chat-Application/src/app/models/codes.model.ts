@@ -62,3 +62,16 @@ export function getMessagesFromPeople(username: string): string {
     },
   });
 }
+
+export function getMessagesFromGroup(groupName: string): string {
+  return JSON.stringify({
+    action: 'onchat',
+    data: {
+      event: 'GET_ROOM_CHAT_MES',
+      data: {
+        name: groupName,
+        page: 1,
+      },
+    },
+  });
+}

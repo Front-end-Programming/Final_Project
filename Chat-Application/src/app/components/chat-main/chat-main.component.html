@@ -28,7 +28,7 @@
       <ul>
         <li
           *ngFor="let message of messages; index as i"
-          [ngClass]="message.name === 'duypro' ? 'right' : ''"
+          [ngClass]="message.name === mainUsername ? 'right' : ''"
         >
           <div
             [attr.data-username]="message.name"

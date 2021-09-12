@@ -1,5 +1,5 @@
 import { Message } from './../models/message.model';
-import { Observable, of, scheduled, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { Injectable } from '@angular/core';
 import {
@@ -8,7 +8,8 @@ import {
   signInCode,
   getUsersCode,
   checkOnlineCode,
-  getMessagesFromPeople
+  getMessagesFromPeople,
+  getMessagesFromGroup
 } from './../models/codes.model';
 
 const url = 'ws://203.113.148.132:23023/chat/chat';
@@ -21,7 +22,8 @@ export class WebsocketService {
   users: User[] = [];
   subject = new Subject<User[]>();
   checkOnlineSubject = new Subject<boolean>();
-  messagesPeople: Observable<Message[]> = new Observable();
+  messagesPeople = new Subject<Message[]>();
+  messagesGroup = new Subject<Message[]>();
   constructor() {}
 
   // Open the connection
@@ -72,8 +74,18 @@ export class WebsocketService {
     this.ws.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
       if (data.status === 'success' && data.event === 'GET_PEOPLE_CHAT_MES') {
-        // this.messagesPeople.next(data.data);
-        this.messagesPeople = of(data.data);
+        this.messagesPeople.next(data.data);
+      }
+    })
+  }
+
+  getMessagesFromGroup(groupName: string): void {
+    this.ws.send(getMessagesFromGroup(groupName));
+
+    this.ws.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      if (data.status === 'success' && data.event === 'GET_ROOM_CHAT_MES') {
+        this.messagesGroup.next(data.data.chatData);
       }
     })
   }
