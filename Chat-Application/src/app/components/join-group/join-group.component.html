@@ -3,14 +3,16 @@
     <h2 class="content__branch">Super</h2>
     <h3 class="content__title">Join a group</h3>
 
-    <form class="content__form" #joinGroup="ngForm">
+    <form class="content__form" #joinGroup="ngForm" (ngSubmit)="onSubmit()">
       <input
         required
         type="text"
         ngModel
         name="groupName"
+        [(ngModel)]="groupName"
         #gn="ngModel"
         placeholder="Enter the name of the group"
+        (input)="hideError()"
       />
 
       <div class="content__form-error" *ngIf="gn.touched && gn.invalid">
@@ -21,6 +23,12 @@
         </div>
 
       </div>
+
+      <div class="content__form-error-server" *ngIf="isShowError">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>The group does not exist</span>
+    </div>
+
       <button [disabled]="gn.invalid" type="submit">Join Now</button>
     </form>
 

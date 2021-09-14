@@ -4,6 +4,6 @@ export interface Message {
     type: number;
     to: string;
     mes: string;
-    createAt: string;
+    createAt?: string;
 
 }

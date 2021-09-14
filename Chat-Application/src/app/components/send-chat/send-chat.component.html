@@ -1,15 +1,16 @@
 <div class="send-chat">
-  <form #sendMessage="ngForm">
+  <form #sendMessage="ngForm" (ngSubmit)="onSubmit()">
     <div class="send-chat__form">
       <input
         name="msg"
         type="text"
         placeholder="Type your message"
         [(ngModel)]="message"
+        
       />
 
-      <div class="send-chat__emoji">
-        <i (click)="isShowEmoji = !isShowEmoji" class="fas fa-smile"></i>
+      <div [class.contract]="!isExpand" class="send-chat__emoji">
+        <i  (click)="isShowEmoji = !isShowEmoji" class="fas fa-smile"></i>
         <emoji-mart
           [class.show]="isShowEmoji"
           color="#0084ff"

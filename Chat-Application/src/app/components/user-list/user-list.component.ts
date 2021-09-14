@@ -21,8 +21,12 @@ export class UserListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(): void {
     this.websocketService.getUsers();
-    this.subscription = this.websocketService.subject.subscribe((value) => {
+    this.subscription = this.websocketService.usersSubject.subscribe((value) => {
       this.users = value;
     });
   }
@@ -35,7 +39,23 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.isCollapse = !this.isCollapse;
   }
 
-  showMessage(type: number, name: string) {
-    this.router.navigate([`chat-main/${type}/${name}`], { relativeTo: this.route });
+  createGroup(groupName: string): void {
+    this.websocketService.createGroup(groupName);
+    this.websocketService.ws.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      if(data.status === 'success' && data.event === 'CREATE_ROOM') {
+        this.getUsers();
+      } 
+    })
+  }
+
+  joinGroup(groupName: string): void {
+    this.websocketService.joinGroup(groupName);
+    this.websocketService.ws.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      if(data.status === 'success' && data.event === 'JOIN_ROOM') {
+        this.getUsers();
+      }
+    })
   }
 }

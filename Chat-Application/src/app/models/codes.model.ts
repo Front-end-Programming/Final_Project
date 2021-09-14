@@ -50,7 +50,7 @@ export function checkOnlineCode(name: string): string {
   });
 }
 
-export function getMessagesFromPeople(username: string): string {
+export function getMessagesFromPeopleCode(username: string): string {
   return JSON.stringify({
     action: 'onchat',
     data: {
@@ -63,7 +63,7 @@ export function getMessagesFromPeople(username: string): string {
   });
 }
 
-export function getMessagesFromGroup(groupName: string): string {
+export function getMessagesFromGroupCode(groupName: string): string {
   return JSON.stringify({
     action: 'onchat',
     data: {
@@ -71,6 +71,71 @@ export function getMessagesFromGroup(groupName: string): string {
       data: {
         name: groupName,
         page: 1,
+      },
+    },
+  });
+}
+
+export function getInfoFromGroupCode(groupName: string): string {
+  return JSON.stringify({
+    action: 'onchat',
+    data: {
+      event: 'GET_ROOM_CHAT_MES',
+      data: {
+        name: groupName,
+        page: 1,
+      },
+    },
+  });
+}
+
+export function sendChatPersonCode(username: string, message: string): string {
+  return JSON.stringify({
+    action: 'onchat',
+    data: {
+      event: 'SEND_CHAT',
+      data: {
+        type: 'people',
+        to: username,
+        mes: message,
+      },
+    },
+  });
+}
+
+export function sendChatGroupCode(groupName: string, message: string): string {
+  return JSON.stringify({
+    action: 'onchat',
+    data: {
+      event: 'SEND_CHAT',
+      data: {
+        type: 'room',
+        to: groupName,
+        mes: message,
+      },
+    },
+  });
+}
+
+export function createGroupCode(groupName: string): string {
+  return JSON.stringify({
+    action: 'onchat',
+    data: {
+      event: 'CREATE_ROOM',
+      data: {
+        name: groupName,
+      },
+    },
+  });
+}
+
+export function joinGroupCode(groupName: string): string {
+  return JSON.stringify({
+    action: 'onchat',
+    data: {
+      event: 'JOIN_ROOM',
+      data: {
+        name: groupName,
       },
     },
   });

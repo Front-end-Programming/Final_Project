@@ -21,7 +21,7 @@
 
     & > i.fas {
       transform-origin: center;
-      transition: transform .3s;
+      transition: transform 0.3s;
     }
 
     & > i.fas.rotate {
@@ -59,22 +59,8 @@
         @include avatar(36px, 12px);
         margin-right: 14px;
 
-        &::after {
-          content: "";
-          position: absolute;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: $clr-disabled;
-          bottom: 0;
-          border: 2px solid var(--clr-bg);
-          right: 0;
-        }
-
-        &.online {
-          &::after {
-            background-color: $clr-successful;
-          }
+        &.group-color {
+          background-color: complement($clr-primary);
         }
       }
 

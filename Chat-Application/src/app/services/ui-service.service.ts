@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UiServiceService {
-  private isShowJoinGroup: boolean = false;
+  private isShowJoinGroup: boolean = false; 
   private isShowCreateGroup: boolean = false;
   private joinGroupSubject = new Subject<boolean>();
   private createGroupSubject = new Subject<boolean>();

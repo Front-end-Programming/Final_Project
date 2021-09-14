@@ -50,11 +50,10 @@
 }
 
 @mixin tooltip($message) {
-
   & {
     z-index: 100;
   }
-  
+
   &::after {
     content: $message;
     position: absolute;
@@ -155,6 +154,7 @@
       &-error {
         color: $clr-error;
         width: 100%;
+        font-size: 14px;
         margin-top: 8px;
 
         & > div {
@@ -163,9 +163,18 @@
           justify-content: flex-start;
 
           & > span {
-            font-size: 14px;
             margin-left: 5px;
           }
+        }
+      }
+
+      &-error-server {
+        color: $clr-error;
+        width: 100%;
+        font-size: 14px;
+
+        & > span {
+          margin-left: 5px;
         }
       }
     }
@@ -190,7 +199,7 @@
   & {
     opacity: 1;
     visibility: visible;
-    transition: opacity .3s, visibility .3s;
+    transition: opacity 0.3s, visibility 0.3s;
 
     &.collapse {
       opacity: 0;

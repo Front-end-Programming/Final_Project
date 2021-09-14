@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { DarkModeService } from 'angular-dark-mode';
 
 @Component({
@@ -10,6 +11,9 @@ export class SendChatComponent implements OnInit {
   message: string = '';
   darkMode: boolean;
   isShowEmoji: boolean = false;
+  @Input() isExpand: boolean;
+  
+  @Output() onSendChat: EventEmitter<string> = new EventEmitter();
 
   constructor(private darkModeService: DarkModeService) { }
 
@@ -29,5 +33,10 @@ export class SendChatComponent implements OnInit {
 
   addEmoji(event: any) {
     this.message += event.emoji.native;
+  }
+
+  onSubmit(): void {
+    this.onSendChat.emit(this.message.trim());
+    this.message = '';
   }
 }

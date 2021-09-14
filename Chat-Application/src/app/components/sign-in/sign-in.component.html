@@ -22,7 +22,6 @@
 
         <!-- Validate form values -->
         <div *ngIf="un.touched && un.invalid">
-
           <!-- Not null -->
           <div *ngIf="un.errors?.required" class="sign-container__warning">
             <i class="fas fa-exclamation-circle"></i>
@@ -37,23 +36,14 @@
               {{ un.errors?.minlength.requiredLength }} chars</span
             >
           </div>
-
-
-          
         </div>
 
         <!-- Check whether username or password is correct -->
-        
-          
-            <div *ngIf="!isCorrect" class="sign-container__warning">
-              <i class="fas fa-exclamation-circle"></i>
-              <span>
-                Username or password is incorrect
-              </span
-              >
-            </div>
 
-        
+        <div *ngIf="!isCorrect" class="sign-container__warning">
+          <i class="fas fa-exclamation-circle"></i>
+          <span> Username or password is incorrect </span>
+        </div>
       </div>
 
       <div class="sign-container__form-group">
@@ -66,6 +56,7 @@
           type="{{ isShowPassword ? 'text' : 'password' }}"
           name="password"
           #pw="ngModel"
+          (input)="hideError()"
         />
         <i
           (click)="showPassword()"
@@ -90,12 +81,15 @@
             >
           </div>
         </div>
-
-        
-
       </div>
 
-      <button [disabled]="signIn.invalid" class="sign-container__form-btn" type="submit">Sign In</button>
+      <button
+        [disabled]="signIn.invalid"
+        class="sign-container__form-btn"
+        type="submit"
+      >
+        Sign In
+      </button>
     </form>
   </section>
 

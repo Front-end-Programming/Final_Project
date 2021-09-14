@@ -1,5 +1,6 @@
 @import '../../../assets/colors';
 @import '../../../assets/utilities';
+@import '../../../assets/responsive';
 
 .send-chat {
     border-radius: 10px;
@@ -54,11 +55,20 @@
     }
 
     &__emoji {
+        --length: 100px;
         color: $clr-primary;
         position: absolute;
-        right: 100px;
+        right: var(--length);
         font-size: 18px;
         cursor: pointer;
+
+        &.contract {
+            right: calc(var(--length) - 16px);
+        }
+
+        @include tablet() {
+            right: 80px;
+        }
 
         emoji-mart {
             position: absolute;

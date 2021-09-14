@@ -9,13 +9,12 @@
     [class.collapse]="isCollapse"
   >
     <li
+      routerLink="chat-main/{{user.type}}/{{user.name}}"
       routerLinkActive="active"
-      routerLink="/chat/chat-main/{{ user.type }}/{{ user.name }}"
-      (click)="showMessage(user.type, user.name)"
       class="users__list-item"
       *ngFor="let user of users"
     >
-      <div class="users__list-item-avatar">
+      <div [class.group-color]="user.type === 1" class="users__list-item-avatar">
         {{ user.name[0] | uppercase }}
       </div>
       <span title="{{ user.name }}" class="users__list-item-name">{{
@@ -24,6 +23,6 @@
     </li>
   </ul>
 
-  <app-join-group></app-join-group>
-  <app-create-group></app-create-group>
+  <app-join-group  (onJoinGroup)="joinGroup($event)"></app-join-group>
+  <app-create-group  (onCreateGroup)="createGroup($event)"></app-create-group>
 </div>

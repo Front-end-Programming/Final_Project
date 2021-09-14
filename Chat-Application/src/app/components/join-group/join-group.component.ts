@@ -1,6 +1,13 @@
+import { WebsocketService } from './../../services/websocket.service';
 import { uiAnim } from './../../animations';
 import { UiServiceService } from './../../services/ui-service.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,14 +19,21 @@ import { Subscription } from 'rxjs';
 export class JoinGroupComponent implements OnInit, OnDestroy {
   isShowJoinGroup: boolean = false;
   subscription: Subscription;
-  constructor(private uiService: UiServiceService) {}
+  groupName: string = '';
+
+  isShowError: boolean = false;
+  @Output() onJoinGroup: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor(
+    private uiService: UiServiceService,
+    private websocketService: WebsocketService
+  ) {}
 
   ngOnInit(): void {
     this.subscription = this.uiService
       .getJoinGroupSubject()
       .subscribe((value) => {
         this.isShowJoinGroup = value;
-        console.log({ value });
       });
   }
 
@@ -29,5 +43,23 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
 
   closeJoinGroup(): void {
     this.uiService.showJoinGroup();
+  }
+
+  hideError(): void {
+    this.isShowError = false;
+  }
+
+  onSubmit(): void {
+    this.websocketService.joinGroup(this.groupName.trim());
+    this.websocketService.ws.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      if (data.status === 'success' && data.event === 'JOIN_ROOM') {
+        this.onJoinGroup.emit(this.groupName.trim());
+        this.groupName = '';
+        this.closeJoinGroup();
+      } else if (data.status === 'error' && data.event === 'JOIN_ROOM') {
+        this.isShowError = true;
+      }
+    });
   }
 }
