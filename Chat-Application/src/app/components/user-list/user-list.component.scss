@@ -59,9 +59,6 @@
         @include avatar(36px, 12px);
         margin-right: 14px;
 
-        &.group-color {
-          background-color: complement($clr-primary);
-        }
       }
 
       &-name {

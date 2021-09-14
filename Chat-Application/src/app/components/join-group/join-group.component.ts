@@ -43,6 +43,7 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
 
   closeJoinGroup(): void {
     this.uiService.showJoinGroup();
+    this.groupName = '';
   }
 
   hideError(): void {
@@ -50,13 +51,13 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.websocketService.joinGroup(this.groupName.trim());
+    this.onJoinGroup.emit(this.groupName.trim());
     this.websocketService.ws.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
       if (data.status === 'success' && data.event === 'JOIN_ROOM') {
-        this.onJoinGroup.emit(this.groupName.trim());
-        this.groupName = '';
         this.closeJoinGroup();
+        this.isShowError = false;
+        this.groupName = '';
       } else if (data.status === 'error' && data.event === 'JOIN_ROOM') {
         this.isShowError = true;
       }

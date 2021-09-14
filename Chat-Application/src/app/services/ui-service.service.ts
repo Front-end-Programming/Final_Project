@@ -9,7 +9,9 @@ export class UiServiceService {
   private isShowCreateGroup: boolean = false;
   private joinGroupSubject = new Subject<boolean>();
   private createGroupSubject = new Subject<boolean>();
+  
   username: string = '';
+
 
   constructor() {}
 

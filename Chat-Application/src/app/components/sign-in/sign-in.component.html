@@ -84,7 +84,7 @@
       </div>
 
       <button
-        [disabled]="signIn.invalid"
+        [disabled]="signIn.invalid || username.trim() === '' || password.trim() === ''"
         class="sign-container__form-btn"
         type="submit"
       >

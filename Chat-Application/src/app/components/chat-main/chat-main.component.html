@@ -1,7 +1,7 @@
 <div class="chat-main" [class.expand]="isExpandInfo">
   <div>
     <header class="chat-main__header">
-      <div [class.online]="isOnline" class="chat-main__header-avatar">
+      <div [class.group-color]="type === 1" [class.online]="isOnline" class="chat-main__header-avatar">
         {{ username[0] | uppercase }}
       </div>
       <div class="chat-main__header-info">

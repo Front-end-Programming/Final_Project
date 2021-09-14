@@ -1,3 +1,4 @@
+import { UiServiceService } from './../../services/ui-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { WebsocketService } from './../../services/websocket.service';
@@ -14,11 +15,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isCollapse: boolean = false;
 
-  constructor(
-    private websocketService: WebsocketService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private websocketService: WebsocketService, private uiService: UiServiceService) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -26,9 +23,11 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   getUsers(): void {
     this.websocketService.getUsers();
-    this.subscription = this.websocketService.usersSubject.subscribe((value) => {
-      this.users = value;
-    });
+    this.subscription = this.websocketService.usersSubject.subscribe(
+      (value) => {
+        this.users = value;
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -43,19 +42,19 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.websocketService.createGroup(groupName);
     this.websocketService.ws.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
-      if(data.status === 'success' && data.event === 'CREATE_ROOM') {
+      if (data.status === 'success' && data.event === 'CREATE_ROOM') {
         this.getUsers();
-      } 
-    })
+      }
+    });
   }
 
   joinGroup(groupName: string): void {
     this.websocketService.joinGroup(groupName);
     this.websocketService.ws.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
-      if(data.status === 'success' && data.event === 'JOIN_ROOM') {
+      if (data.status === 'success' && data.event === 'JOIN_ROOM') {
         this.getUsers();
       }
-    })
+    });
   }
 }

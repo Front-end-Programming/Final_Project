@@ -37,14 +37,14 @@ export class SignInComponent implements OnInit {
   // Sign in
   onSignIn() {
 
-    this.websocketService.onSignIn(this.username, this.password);
+    this.websocketService.onSignIn(this.username.trim(), this.password.trim());
     this.websocketService.ws.addEventListener('message', (event) => {
       if (
         JSON.parse(event.data).status === 'success' &&
         JSON.parse(event.data).event === 'LOGIN'
       ) {
 
-        this.uiService.sendUsername(this.username);
+        this.uiService.sendUsername(this.username.trim());
 
         this.authService.isAuthenticated = true;
         // Navigate to chat component

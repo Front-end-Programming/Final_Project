@@ -40,6 +40,7 @@ export class CreateGroupComponent implements OnInit, OnDestroy {
 
   closeCreateGroup(): void {
     this.uiService.showCreateGroup();
+    this.groupName = '';
   }
 
   ngOnDestroy(): void {
@@ -51,13 +52,13 @@ export class CreateGroupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.websocketService.createGroup(this.groupName.trim());
+    this.onCreateGroup.emit(this.groupName.trim());
     this.websocketService.ws.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
       if (data.status === 'success' && data.event === 'CREATE_ROOM') {
-        this.onCreateGroup.emit(this.groupName.trim());
-        this.groupName = '';
         this.closeCreateGroup();
+        this.isShowError = false;
+        this.groupName = '';
       } else if (data.status === 'error' && data.event === 'CREATE_ROOM') {
         this.isShowError = true;
       }

@@ -16,20 +16,20 @@
       />
 
       <div class="content__form-error" *ngIf="gn.touched && gn.invalid">
-        
         <div *ngIf="gn.errors?.required">
-            <i class="fas fa-exclamation-circle"></i>
-            <span>The name cannot be blank</span>
+          <i class="fas fa-exclamation-circle"></i>
+          <span>The name cannot be blank</span>
         </div>
-
       </div>
 
       <div class="content__form-error-server" *ngIf="isShowError">
         <i class="fas fa-exclamation-circle"></i>
         <span>The group does not exist</span>
-    </div>
+      </div>
 
-      <button [disabled]="gn.invalid" type="submit">Join Now</button>
+      <button [disabled]="gn.invalid || groupName.trim() === ''" type="submit">
+        Join Now
+      </button>
     </form>
 
     <div (click)="closeJoinGroup()" title="Close" class="content__close">

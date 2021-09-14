@@ -95,8 +95,10 @@
         </div>
       </div>
 
+      
+
       <button
-        [disabled]="signUp.invalid"
+        [disabled]="signUp.invalid || username.trim() === '' || username.trim() === ''"
         class="sign-container__form-btn"
         type="submit"
       >

@@ -10,6 +10,10 @@
   font-size: $fontSize;
   color: #fff;
   font-weight: 600;
+
+  &.group-color {
+    background-color: complement($color: $clr-primary);
+  }
 }
 
 @mixin threeDots {

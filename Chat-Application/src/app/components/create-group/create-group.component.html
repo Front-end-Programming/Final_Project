@@ -31,7 +31,7 @@
           <span>The name has already existed</span>
       </div>
 
-        <button [disabled]="gn.invalid" type="submit">Create Now</button>
+        <button [disabled]="gn.invalid || groupName.trim() === ''" type="submit">Create Now</button>
       </form>
   
       <div (click)="closeCreateGroup()" title="Close" class="content__close">
