@@ -14,8 +14,8 @@ export class SignInComponent implements OnInit {
   password: string = '';
   isShowPassword: boolean = false;
 
-  // Kiem tra ten nguoi dung va mat khau co dung hay khong
-  isCorrect: boolean = false;
+  // Check the availability of username and password
+  isCorrect: boolean = true;
 
 
   constructor(
