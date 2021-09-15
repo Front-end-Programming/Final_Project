@@ -18,14 +18,15 @@
 
     & > div:nth-child(2) {
       width: 300px;
-      box-shadow: var(--clr-shadow);
+      box-shadow: none;
+      border: 1px solid var(--clr-border);
       border-radius: 10px;
       position: absolute;
       background-color: var(--clr-bg);
       overflow: hidden;
       top: 10px;
       bottom: 10px;
-      right: 0;
+      right: -10px;
       z-index: 100;
     }
   }
@@ -247,7 +248,7 @@
 
   &__group {
     position: relative;
-    margin-top: 66px;
+    margin-top: 68px;
     width: 280px;
     height: calc(555px + 62px);
     padding: 0 26px;
@@ -274,7 +275,7 @@
       flex-direction: column;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 35px;
+      margin-bottom: 32px;
       padding: 20px;
       border-radius: 10px;
       box-shadow: var(--clr-shadow);
@@ -350,7 +351,7 @@
     &-members {
       padding-left: 10px;
       width: 280px;
-      max-height: 394px;
+      max-height: 365px;
       list-style: none;
       display: flex;
       flex-direction: column;

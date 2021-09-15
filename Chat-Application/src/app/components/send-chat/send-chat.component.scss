@@ -46,6 +46,10 @@
             place-items: center;
             @include tooltip("Send");
 
+            &::after {
+                top: -100%;
+            }
+
             &:disabled {
                 background-color: transparent;
                 color: $clr-disabled    ;

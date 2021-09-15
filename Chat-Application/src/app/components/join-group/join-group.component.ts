@@ -33,6 +33,7 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
     this.subscription = this.uiService
       .getJoinGroupSubject()
       .subscribe((value) => {
+        console.log(value);
         this.isShowJoinGroup = value;
       });
   }
@@ -42,8 +43,9 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
   }
 
   closeJoinGroup(): void {
-    this.uiService.showJoinGroup();
+    this.uiService.closeJoinGroup();
     this.groupName = '';
+    this.isShowError = false;
   }
 
   hideError(): void {
@@ -56,7 +58,6 @@ export class JoinGroupComponent implements OnInit, OnDestroy {
       const data = JSON.parse(event.data);
       if (data.status === 'success' && data.event === 'JOIN_ROOM') {
         this.closeJoinGroup();
-        this.isShowError = false;
         this.groupName = '';
       } else if (data.status === 'error' && data.event === 'JOIN_ROOM') {
         this.isShowError = true;

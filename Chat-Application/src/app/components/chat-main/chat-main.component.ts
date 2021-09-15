@@ -41,7 +41,7 @@ export class ChatMainComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private websocketServie: WebsocketService,
+    private websocketService: WebsocketService,
     private uiService: UiServiceService
   ) {}
 
@@ -65,7 +65,7 @@ export class ChatMainComponent implements OnInit, OnDestroy {
   }
 
   updateMessage(): void {
-    this.websocketServie.ws.addEventListener('message', (e) => {
+    this.websocketService.ws.addEventListener('message', (e) => {
       const data = JSON.parse(e.data);
       if (data.status === 'success' && data.event === 'SEND_CHAT') {
         console.log(data.data.mes);
@@ -76,8 +76,8 @@ export class ChatMainComponent implements OnInit, OnDestroy {
   }
 
   getOnlineInfo(): void {
-    this.websocketServie.checkOnline(this.username);
-    this.onlineSubscription = this.websocketServie.checkOnlineSubject.subscribe(
+    this.websocketService.checkOnline(this.username);
+    this.onlineSubscription = this.websocketService.checkOnlineSubject.subscribe(
       (data) => {
         this.isOnline = data;
       }
@@ -86,8 +86,8 @@ export class ChatMainComponent implements OnInit, OnDestroy {
 
   getUserInfo(): void {
     // Get user's messages
-    this.websocketServie.getMessagesFromPeople(this.username);
-    this.peopleSubscription = this.websocketServie.messagesPeople.subscribe(
+    this.websocketService.getMessagesFromPeople(this.username);
+    this.peopleSubscription = this.websocketService.messagesPeople.subscribe(
       (data) => {
         this.messages = <Message[]>data;
         this.scrollToTop();
@@ -97,16 +97,16 @@ export class ChatMainComponent implements OnInit, OnDestroy {
 
   getGroupInfo(): void {
     // Get messages of group
-    this.websocketServie.getMessagesFromGroup(this.username);
+    this.websocketService.getMessagesFromGroup(this.username);
     this.messagesGroupSubscription =
-      this.websocketServie.messagesGroup.subscribe((data) => {
+      this.websocketService.messagesGroup.subscribe((data) => {
         this.messages = <Message[]>data;
         this.scrollToTop();
       });
 
     // Get info of group
-    this.websocketServie.getInfoFromGroup(this.username);
-    this.infoGroupSubscription = this.websocketServie.infoGroup.subscribe(
+    this.websocketService.getInfoFromGroup(this.username);
+    this.infoGroupSubscription = this.websocketService.infoGroup.subscribe(
       (data) => {
         this.owner = data.own;
         this.members = data.userList;
@@ -151,10 +151,10 @@ export class ChatMainComponent implements OnInit, OnDestroy {
 
   sendChat(message: string) {
     if (this.type === 0) {
-      this.websocketServie.sendChatPerson(this.username, message);
+      this.websocketService.sendChatPerson(this.username, message);
       this.getUserInfo();
     } else if (this.type === 1) {
-      this.websocketServie.sendChatGroup(this.username, message);
+      this.websocketService.sendChatGroup(this.username, message);
       this.getGroupInfo();
     }
   }

@@ -16,12 +16,23 @@ export class UiServiceService {
   constructor() {}
 
   showJoinGroup(): void {
-    this.isShowJoinGroup = !this.isShowJoinGroup;
+    this.isShowJoinGroup = true;
+    this.joinGroupSubject.next(this.isShowJoinGroup);
+  }
+
+
+  closeJoinGroup(): void {
+    this.isShowJoinGroup = false;
     this.joinGroupSubject.next(this.isShowJoinGroup);
   }
 
   showCreateGroup(): void {
-    this.isShowCreateGroup = !this.isShowCreateGroup;
+    this.isShowCreateGroup = true;
+    this.createGroupSubject.next(this.isShowCreateGroup);
+  }
+
+  closeCreateGroup(): void {
+    this.isShowCreateGroup = false;
     this.createGroupSubject.next(this.isShowCreateGroup);
   }
 

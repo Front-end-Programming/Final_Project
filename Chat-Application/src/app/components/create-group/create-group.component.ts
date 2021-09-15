@@ -39,8 +39,9 @@ export class CreateGroupComponent implements OnInit, OnDestroy {
   }
 
   closeCreateGroup(): void {
-    this.uiService.showCreateGroup();
+    this.uiService.closeCreateGroup();
     this.groupName = '';
+    this.isShowError = false;
   }
 
   ngOnDestroy(): void {
@@ -57,7 +58,6 @@ export class CreateGroupComponent implements OnInit, OnDestroy {
       const data = JSON.parse(event.data);
       if (data.status === 'success' && data.event === 'CREATE_ROOM') {
         this.closeCreateGroup();
-        this.isShowError = false;
         this.groupName = '';
       } else if (data.status === 'error' && data.event === 'CREATE_ROOM') {
         this.isShowError = true;
