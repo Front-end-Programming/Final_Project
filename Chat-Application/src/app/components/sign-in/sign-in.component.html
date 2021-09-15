@@ -1,45 +1,37 @@
 <div class="sign-container">
-  <section class="sign-container__content">
-    <header>
-      <p>Welcome back</p>
-      <h1>Sign in to Super.</h1>
-      <p>Don't have an account? <a routerLink="/sign-up">Sign up</a></p>
-    </header>
+    <section class="sign-container__content">
+        <header>
+            <p>Welcome back</p>
+            <h1>Sign in to Super.</h1>
+            <p>Don't have an account? <a routerLink="/sign-up">Sign up</a></p>
+        </header>
 
-    <form class="sign-container__form" #signIn="ngForm" (ngSubmit)="onSignIn()">
-      <div class="sign-container__form-group">
-        <label for="username">Username</label>
-        <input
-          [(ngModel)]="username"
-          minlength="3"
-          required
-          type="text"
-          name="username"
-          #un="ngModel"
-        />
-        <i class="fas fa-user"></i>
+        <form class="sign-container__form" #signIn="ngForm" (ngSubmit)="onSignIn()">
+            <div class="sign-container__form-group">
+                <label for="username">Username</label>
+                <input [(ngModel)]="username" minlength="3" required type="text" name="username" #un="ngModel" (input)="hideError()" />
+                <i class="fas fa-user"></i>
 
-        <!-- Validate form values -->
-        <div *ngIf="un.touched && un.invalid">
+                <!-- Validate form values -->
+                <div *ngIf="un.touched && un.invalid">
 
-          <!-- Not null -->
-          <div *ngIf="un.errors?.required" class="sign-container__warning">
-            <i class="fas fa-exclamation-circle"></i>
-            <span>The username cannot be blank</span>
-          </div>
+                    <!-- Not null -->
+                    <div *ngIf="un.errors?.required" class="sign-container__warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>The username cannot be blank</span>
+                    </div>
 
-          <!-- At least 3 characters -->
-          <div *ngIf="un.errors?.minlength" class="sign-container__warning">
-            <i class="fas fa-exclamation-circle"></i>
-            <span
-              >The username must be at least
+                    <!-- At least 3 characters -->
+                    <div *ngIf="un.errors?.minlength" class="sign-container__warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>The username must be at least
               {{ un.errors?.minlength.requiredLength }} chars</span
             >
           </div>
         </div>
 
         <!-- Check whether username or password is correct -->
-        <div *ngIf="isCorrect" class="sign-container__warning">
+        <div *ngIf="!isCorrect" class="sign-container__warning">
           <i class="fas fa-exclamation-circle"></i>
           <span>
             Username or password is incorrect
@@ -58,6 +50,7 @@
           type="{{ isShowPassword ? 'text' : 'password' }}"
           name="password"
           #pw="ngModel"
+          (input)="hideError()"
         />
         <i
           (click)="showPassword()"
@@ -71,23 +64,23 @@
           <div *ngIf="pw.errors?.required" class="sign-container__warning">
             <i class="fas fa-exclamation-circle"></i>
             <span>The password cannot be blank</span>
-          </div>
+                    </div>
 
-          <!-- At least 3 characters -->
-          <div *ngIf="pw.errors?.minlength" class="sign-container__warning">
-            <i class="fas fa-exclamation-circle"></i>
-            <span
-              >The password must be at least
+                    <!-- At least 3 characters -->
+                    <div *ngIf="pw.errors?.minlength" class="sign-container__warning">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>The password must be at least
               {{ pw.errors?.minlength.requiredLength }} chars</span
             >
           </div>
         </div>
 
-        
+
 
       </div>
 
-      <button [disabled]="signIn.invalid" class="sign-container__form-btn" type="submit">Sign In</button>
+      <button [disabled]="signIn.invalid || username.trim() === '' || password.trim() === ''"
+      class="sign-container__form-btn" type="submit">Sign In</button>
     </form>
   </section>
 

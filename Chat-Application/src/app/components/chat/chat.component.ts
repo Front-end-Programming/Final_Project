@@ -1,5 +1,7 @@
 import { UiServiceService } from './../../services/ui-service.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { WebsocketService } from './../../services/websocket.service';
 
 @Component({
   selector: 'app-chat',
@@ -7,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  username: string = "Nguyen Hoang Duc Duy";
+  username: string = "";
 
-  constructor(private uiService: UiServiceService) { }
+  constructor(
+    private uiService: UiServiceService,
+    private websocketService: WebsocketService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.username = this.uiService.username;
   }
 
   showJoinGroup(): void {
@@ -22,4 +29,12 @@ export class ChatComponent implements OnInit {
     this.uiService.showCreateGroup();
   }
 
+  onLogOut(): void {
+    //  1. Send data to server
+    this.websocketService.onLogOut();
+
+    //  2. Navigate back to sign-in component
+    this.authService.onLogOut();
+
+  }
 }
