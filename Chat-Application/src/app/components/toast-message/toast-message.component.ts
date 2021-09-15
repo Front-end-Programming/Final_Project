@@ -1,3 +1,4 @@
+import { WebsocketService } from './../../services/websocket.service';
 import { slideIn } from './../../animations';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,14 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToastMessageComponent implements OnInit {
   isShowToast: boolean = false;
-  private timeOut =  setTimeout(() => {
-    this.isShowToast = false;
-  }, 2000);
+  private timeOut: any;
 
-  constructor() { }
+  constructor(private websocketService: WebsocketService) { }
 
   ngOnInit(): void {
-   
+    this.websocketService.ws.addEventListener('message', (event) => {
+      if (
+        JSON.parse(event.data).status === 'success' &&
+        JSON.parse(event.data).event === 'REGISTER'
+      ) {
+        this.isShowToast = true;
+        this.timeOut = setTimeout(() => {
+          this.isShowToast = false;
+        }, 3000);
+      }
+    });
   }
 
   closeToast(): void {
