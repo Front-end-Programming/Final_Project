@@ -1,28 +1,30 @@
 <div class="users">
   <h4 (click)="collapse()" class="users__heading">
-    All Conversations
-    <i class="fas fa-chevron-down" [class.rotate]="isCollapse"></i>
+      All Conversations
+      <i class="fas fa-chevron-down" [class.rotate]="isCollapse"></i>
   </h4>
-  <ul
-    [ngStyle]="{ display: users.length === 0 ? 'none' : 'block' }"
-    class="users__list"
-    [class.collapse]="isCollapse"
-  >
-    <li
-      routerLink="chat-main/{{user.type}}/{{user.name}}"
-      routerLinkActive="active"
-      class="users__list-item"
-      *ngFor="let user of users"
-    >
-      <div [class.group-color]="user.type === 1" class="users__list-item-avatar">
-        {{ user.name[0] | uppercase }}
-      </div>
-      <span title="{{ user.name }}" class="users__list-item-name">{{
-        user.name
-      }}</span>
-    </li>
+  <ul class="users__list" [class.collapse]="isCollapse">
+      <li class="users__list-item">
+          <div class="users__list-item-avatar">A</div>
+          <span [attr.data-username]=" 1 + 1" title="Alexander HoHo HoHoHoHo" class="users__list-item-name">Alexander HoHossssssssssssssssssssss</span> 
+      </li>
+
+      <li class="users__list-item active">
+          <div class="users__list-item-avatar">C</div>
+          <span  title="Alexander HoHo HoHoHoHo" class="users__list-item-name">Chiranjeevi Lluís</span> 
+      </li>
+
+      <li class="users__list-item">
+          <div class="users__list-item-avatar">M</div>
+          <span title="Alexander HoHo HoHoHoHo" class="users__list-item-name">Ming Bake</span> 
+      </li>
+
+     
+
+
+      
   </ul>
 
-  <app-join-group  (onJoinGroup)="joinGroup($event)"></app-join-group>
-  <app-create-group (onCreateGroup)="createGroup($event)"></app-create-group>
+  <app-join-group></app-join-group>
+  <app-create-group></app-create-group>
 </div>

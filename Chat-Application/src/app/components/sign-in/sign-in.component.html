@@ -16,12 +16,12 @@
           type="text"
           name="username"
           #un="ngModel"
-          (input)="hideError()"
         />
         <i class="fas fa-user"></i>
 
         <!-- Validate form values -->
         <div *ngIf="un.touched && un.invalid">
+
           <!-- Not null -->
           <div *ngIf="un.errors?.required" class="sign-container__warning">
             <i class="fas fa-exclamation-circle"></i>
@@ -39,10 +39,12 @@
         </div>
 
         <!-- Check whether username or password is correct -->
-
-        <div *ngIf="!isCorrect" class="sign-container__warning">
+        <div *ngIf="isCorrect" class="sign-container__warning">
           <i class="fas fa-exclamation-circle"></i>
-          <span> Username or password is incorrect </span>
+          <span>
+            Username or password is incorrect
+          </span
+          >
         </div>
       </div>
 
@@ -56,7 +58,6 @@
           type="{{ isShowPassword ? 'text' : 'password' }}"
           name="password"
           #pw="ngModel"
-          (input)="hideError()"
         />
         <i
           (click)="showPassword()"
@@ -81,15 +82,12 @@
             >
           </div>
         </div>
+
+        
+
       </div>
 
-      <button
-        [disabled]="signIn.invalid || username.trim() === '' || password.trim() === ''"
-        class="sign-container__form-btn"
-        type="submit"
-      >
-        Sign In
-      </button>
+      <button [disabled]="signIn.invalid" class="sign-container__form-btn" type="submit">Sign In</button>
     </form>
   </section>
 
