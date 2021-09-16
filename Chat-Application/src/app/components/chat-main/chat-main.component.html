@@ -1,18 +1,27 @@
-<div class="chat-main" [class.contract]="isExpandInfo">
+<div class="chat-main" [class.expand]="isExpandInfo">
   <div>
     <header class="chat-main__header">
-      <div class="chat-main__header-avatar online">N</div>
+      <div
+        [class.group-color]="type === 1"
+        [class.online]="isOnline"
+        class="chat-main__header-avatar"
+      >
+        {{ username[0] | uppercase }}
+      </div>
       <div class="chat-main__header-info">
-        <h3>Nguyen Hoang Duc Duy</h3>
-        <span>Active Now</span>
-        <!-- <span>Offline</span> -->
+        <h3>{{ username }}</h3>
+        <span *ngIf="isOnline; else offline">Active Now</span>
+
+        <ng-template #offline>
+          <span>Offline</span>
+        </ng-template>
       </div>
       <div (click)="expandInfo()" class="chat-main__header-more">
         <i class="fas fa-info-circle"></i>
       </div>
     </header>
 
-    <div class="chat-main__content">
+    <div class="chat-main__content" #messageList>
       <img
         *ngIf="messages.length === 0"
         draggable="false"
@@ -23,7 +32,7 @@
       <ul>
         <li
           *ngFor="let message of messages; index as i"
-          [ngClass]="message.name === 'duypro' ? 'right' : ''"
+          [ngClass]="message.name === mainUsername ? 'right' : ''"
         >
           <div
             [attr.data-username]="message.name"
@@ -42,50 +51,52 @@
       </ul>
     </div>
 
-    <app-send-chat></app-send-chat>
+    <app-send-chat
+      [isExpand]="isExpandInfo"
+      (onSendChat)="sendChat($event)"
+    ></app-send-chat>
   </div>
 
   <div>
     <div class="chat-main__group">
-      <img class="chat-main__group-img"
-      draggable="false"
-      src="../../../assets/images/undraw_Waiting__for_you_ldha.svg"
-      alt=""
-    />
+      <img
+        *ngIf="hasRoute('/chat/chat-main/0/')"
+        class="chat-main__group-img"
+        draggable="false"
+        src="../../../assets/images/undraw_Waiting__for_you_ldha.svg"
+        alt=""
+      />
 
-      <div class="chat-main__group-info">
-        <div class="chat-main__group-avatar">T</div>
-        <h3 class="chat-main__group-name">Typescript</h3>
+      <div class="chat-main__group-info" *ngIf="hasRoute('/chat/chat-main/1/')">
+        <div class="chat-main__group-avatar">{{ username[0] | uppercase }}</div>
+        <h3 title="{{ username }}" class="chat-main__group-name">
+          {{ username }}
+        </h3>
+        <p title="{{ owner }}" class="chat-main__group-owner">
+          Owner: {{ owner }}
+        </p>
       </div>
 
+      <div
+        class="chat-main__group-details"
+        *ngIf="hasRoute('/chat/chat-main/1/')"
+      >
+        <h4 (click)="collapse()">
+          Chat Members
+          <i [class.rotate]="isCollapse" class="fas fa-chevron-down"></i>
+        </h4>
 
-      <div class="chat-main__group-details">
-          <h4 (click)="collapse()" >Chat Members
-            <i [class.rotate]="isCollapse" class="fas fa-chevron-down"></i>
-          </h4>
-
-        <ul class="chat-main__group-members" [class.collapse]="isCollapse">
-          <li>
-            <div class="chat-main__group-members-avatar">G</div>
-            <span class="chat-main__group-members-name">Gsgsgsgssgsg</span>
+        <ul
+          *ngIf="members.length !== 0"
+          class="chat-main__group-members"
+          [class.collapse]="isCollapse"
+        >
+          <li *ngFor="let member of members">
+            <div class="chat-main__group-members-avatar">
+              {{ member.name[0] | uppercase }}
+            </div>
+            <span class="chat-main__group-members-name">{{ member.name }}</span>
           </li>
-
-          <li>
-            <div class="chat-main__group-members-avatar">A</div>
-            <span class="chat-main__group-members-name">AGAsgsgssssssgcccccccccccssgsg</span>
-          </li>
-
-          <li>
-            <div class="chat-main__group-members-avatar">P</div>
-            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
-          </li>
-
-          <li>
-            <div class="chat-main__group-members-avatar">P</div>
-            <span class="chat-main__group-members-name">PGsgsgsgssgsg</span>
-          </li>
-
-
         </ul>
       </div>
     </div>
